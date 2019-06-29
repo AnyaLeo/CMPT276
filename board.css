@@ -1,0 +1,11 @@
+.movable{
+  position: absolute;
+  font-size: 20px;
+  width: 300px;
+  height: 100px;
+  padding: 0.5em;
+}
+
+#imgForm{
+  display: none;
+}

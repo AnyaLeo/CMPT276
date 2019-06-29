@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Multibrain</title>
+        <link rel="stylesheet" href="after login style.css">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                	<a href="#multibrain">Multibrain</a>
+                	<a href="#boards">Boards</a>
+                    <a href="#groups">Groups</a>
+                    <a href="#profile">Profile</a>
+                   	<a href="logout.html">Logout</a>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section id="multibrain">
+                <div class="inner-section">
+                	<h1> Welcome to Multibrain.</h1>
+                	<p> Multibrain provides users with the tools they need for a successful brainstorming session.</p>
+                	<p> Through using this web application, users can create boards, where they can invite their teammates to collaborate on projects.</p>
+                	<p> Key features include:</p>
+                	<ul>
+                		<li>The ability to work on a board at the same time as team members</li>
+                		<li>A voice feature to allow for communication within the team</li>
+                		<li>The ability to add notes on a board, which can contain text, images, or links</li>
+                		<li>The ability to draw and add shapes directly on a board</li>
+                		<li>Being able to save a board to your profile</li>
+                	</ul>
+                </div>
+            </section>
+            <section id="boards">
+                <div class="inner-section">
+                	<h2> Boards</h2>
+                	<p> Here is a list of all of your boards. </p>
+					</style>
+					</head>
+					<body>
+						<!-- Trigger/Open The Modal -->
+						<button id="myBtn">Create New Board</button>
+
+						<!-- The Modal -->
+						<div id="myModal" class="modal">
+
+  						<!-- Modal content -->
+  						<div class="modal-content">
+    						<span class="close">&times;</span>
+    						<script>
+            					function Create() {
+               						window.location = "new board.html"; <!-- "new board.html" should be changed to whatever the real file is -->
+            					}
+      						</script>
+    						<p>Name of Board</p>
+    						<p> Once you have inputted the name of your board, click the "Create Board" button. </p>
+    						<form name="Name" id="Name">
+							<input type="text" name="Description" id="Description" size="20" maxlength="50">
+							<input type = "button" value = "Create Board" onclick = "Create();" />
+							</form>
+  						</div>
+
+						<script>
+						// Get the modal
+						var modal = document.getElementById("myModal");
+						
+						// Get the button that opens the modal
+						var btn = document.getElementById("myBtn");
+						
+						// Get the <span> element that closes the modal
+						var span = document.getElementsByClassName("close")[0];
+						
+						// When the user clicks the button, open the modal 
+						btn.onclick = function() {
+						  modal.style.display = "block";
+						}
+						
+						// When the user clicks on <span> (x), close the modal
+						span.onclick = function() {
+						  modal.style.display = "none";
+						}
+						
+						// When the user clicks anywhere outside of the modal, close it
+						window.onclick = function(event) {
+						  if (event.target == modal) {
+						    modal.style.display = "none";
+						  }
+						}
+						</script>
+					</body>
+					</head>
+                </div>
+            </section>
+            <section id="groups">
+                <div class="inner-section">
+                	<h3> Groups</h3>
+                	<p> Here is a list of all the groups that you are in. </p>
+                </div>
+            </section>
+            <section id="profile">
+                <div class="inner-section">
+                	<h4> Profile</h4>
+                	<!-- need to somehow update information on page and redisplay page with new info -->
+                	<p> This is your profile! You can edit it. </p>
+                	<p> Name </p>
+                	<form name="Name" id="Name">
+					<input type="text" name="Description" id="Description" size="20" maxlength="50">
+					</form>
+					<p> Email </p>
+					<form name="Email" id="Email">
+					<input type="text" name="Description" id="Description" size="20" maxlength="50">
+					</form>
+					<!--<input type = "button" value = "Update Profile" onclick = "Update();" />-->
+					<!-- click on button to reload page but with updated information -->
+                </div>
+            </section>
+        </main>
+        <footer>
+            
+        </footer>
+    </body>
+</html>
+
+<!-- experiment with AJAX and updating stuff -->
