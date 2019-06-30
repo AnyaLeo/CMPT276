@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Multibrain</title>
-        <%= stylesheet_link_tag "after_login" %>
+        <link rel="stylesheet" href="after_login_style.css">
     </head>
     <body>
         <header>
@@ -40,8 +40,7 @@
 					</head>
 					<body>
 						<!-- Trigger/Open The Modal -->
-						<!-- Apparently dangerous may need to change later -->
-						<%= link_to '<button type="button">Create New Board</button>'.html_safe, controller:"boards" %>
+						<button id="myBtn">Create New Board</button>
 
 						<!-- The Modal -->
 						<div id="myModal" class="modal">
@@ -65,23 +64,23 @@
 						<script>
 						// Get the modal
 						var modal = document.getElementById("myModal");
-
+						
 						// Get the button that opens the modal
 						var btn = document.getElementById("myBtn");
-
+						
 						// Get the <span> element that closes the modal
 						var span = document.getElementsByClassName("close")[0];
-
-						// When the user clicks the button, open the modal
+						
+						// When the user clicks the button, open the modal 
 						btn.onclick = function() {
 						  modal.style.display = "block";
 						}
-
+						
 						// When the user clicks on <span> (x), close the modal
 						span.onclick = function() {
 						  modal.style.display = "none";
 						}
-
+						
 						// When the user clicks anywhere outside of the modal, close it
 						window.onclick = function(event) {
 						  if (event.target == modal) {
@@ -118,7 +117,7 @@
             </section>
         </main>
         <footer>
-
+            
         </footer>
     </body>
 </html>

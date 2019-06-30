@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  #<link rel="stylesheet" href="board.css">
+  #<script src="board.js"></script>
+
+  <%= stylesheet_link_tag "board" %>
+  <%= javascript_include_tag "board" %> 
+
+</head>
+<body>
+  <!--<div class="note" contenteditable="true">New note</div>-->
+  <button type="button" id="add">Add Text</button>
+  <button type="button" id="addImage">Add Image</button>
+  <button type="button" id="delete">Delete Note</button>
+
+  <div id="notesContainer"></div>
+
+  <form id="imgForm">
+    Image link: <input type="text" name="imgLink">
+    <button type="button" id="imgLinkInput">Submit</button>
+  </form>
+
+  <script src="moveNotes.js"></script>
+</body>
+</html>
