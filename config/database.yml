@@ -18,6 +18,7 @@ default: &default
   adapter: postgresql
   encoding: unicode
   username: multibrain #HERE
+  host: localhost
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -52,6 +53,20 @@ development:
   #   log, notice, warning, error, fatal, and panic
   # Defaults to warning.
   #min_messages: notice
+# SQLite version 3.x
+#   gem install sqlite3
+#
+#   Ensure the SQLite 3 gem is defined in your Gemfile
+#   gem 'sqlite3'
+#
+default: &default
+  adapter: sqlite3
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+development:
+  <<: *default
+  database: db/development.sqlite3
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -89,3 +104,8 @@ production:
   #username: postgres
   #password: secret
 #<%= ENV['MULTIBRAIN_DATABASE_PASSWORD'] %>
+  database: db/test.sqlite3
+
+production:
+  <<: *default
+  database: db/production.sqlite3
