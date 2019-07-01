@@ -13,7 +13,7 @@ $(document).ready(function(){
     deleteStatus = false;
     var newDiv = '<div class="movable resizable" contenteditable="true">New note</div>';
     $('#notesContainer').append(newDiv);
-    $(".movable").draggable({containment : [30, 80, 4000, 4000] });
+    $(".movable").draggable({containment : [30, 80, 4000, 4000] }).css("position", "absolute");
     $('.resizable').resizable();
   });
 
