@@ -29,4 +29,22 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select "title", "Contact | MULTIBRAIN"
   end
+  
+  test "should get boards" do
+    get boards_path
+    assert_response :success
+    assert_select "title", "Boards | MULTIBRAIN"
+  end
+  
+  test "should get groups" do
+    get groups_path
+    assert_response :success
+    assert_select "title", "Groups | MULTIBRAIN"
+  end
+  
+    test "should get profile" do
+    get profile_path
+    assert_response :success
+    assert_select "title", "Profile | MULTIBRAIN"
+  end
 end

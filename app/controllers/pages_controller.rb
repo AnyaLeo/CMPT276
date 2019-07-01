@@ -15,6 +15,15 @@ class PagesController < ApplicationController
   
   def contact
   end
+
+  def boards
+  end
+  
+  def groups
+  end
+  
+  def profile
+  end
 end
 
 
