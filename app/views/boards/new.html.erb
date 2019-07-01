@@ -1,8 +1,8 @@
 
 
-<!-- <=% render 'form', board: @board %> 
+<!-- <=% render 'form', board: @board %>
 
-<%= link_to 'Back', boards_path %> --> 
+<%= link_to 'Back', boards_path %> -->
 
 <!DOCTYPE html>
 <html>
@@ -17,19 +17,21 @@
 
 </head>
 <body>
-<h1>New Board</h1>
-  <!--<div class="note" contenteditable="true">New note</div>-->
-  <button type="button" id="add">Add Text</button>
-  <button type="button" id="addImage">Add Image</button>
-  <button type="button" id="delete">Delete Note</button>
 
-  <div id="notesContainer"></div>
+  <ul>
+    <li><%= link_to '<button class="tool"">Back</button>'.html_safe, "../pages/index" %></li>
+    <h1 id="boardName">New Board</h1>
+    <li><button class="tool" id="add">Add Text</button></li>
+    <li><button class="tool" id="addImage">Add Image</button></li>
+    <li><button class="tool" id="delete">Delete Note</button></li>
+  </ul>
 
   <form id="imgForm">
     Image link: <input type="text" name="imgLink">
     <button type="button" id="imgLinkInput">Submit</button>
   </form>
 
-  <script src="moveNotes.js"></script>
+  <div id="notesContainer"></div>
+
 </body>
 </html>

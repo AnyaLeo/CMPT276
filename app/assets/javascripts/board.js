@@ -4,9 +4,10 @@ $(document).ready(function(){
   //add new text note on click
   $('#add').click(function(){
     deleteStatus = false;
-    var newDiv = '<div class="movable" contenteditable="true">New note</div>';
+    var newDiv = '<div class="movable resizable" contenteditable="true">New note</div>';
     $("#notesContainer").append(newDiv);
     $(".movable").draggable();
+    $('.resizable').resizable();
   });
 
   $('#addImage').click(function(){
@@ -19,10 +20,10 @@ $(document).ready(function(){
     var imgSrc = $('input[name=imgLink]').val();
 
     $('#imgForm').trigger("reset");
-    var newDiv = '<div class="movable"><img class="resizableImg" src="' + imgSrc + '" alt="Surprised Pikachu"></div>';
+    var newDiv = '<div class="movable"><img class="resizable" src="' + imgSrc + '" alt="Surprised Pikachu"></div>';
     $("#notesContainer").append(newDiv);
     $('.movable').draggable();
-    $('.resizableImg').resizable();
+    $('.resizable').resizable();
   });
 
   //allow user to delete notes
