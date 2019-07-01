@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'pages/home'
-  get 'pages/help'
+  root 'pages#home'
+  get  'pages/home'
+  get  'pages/help'
+  get  'pages/about'
+  get  'pages/index'
   resources :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get 'pages/index';
 end
