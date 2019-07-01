@@ -1,7 +1,5 @@
 class PagesController < ApplicationController
   
-  layout false;
-  
   def index
     render('index');
   end
@@ -14,5 +12,10 @@ class PagesController < ApplicationController
   
   def about
   end
+  
+  def contact
+  end
 end
+
+
 
