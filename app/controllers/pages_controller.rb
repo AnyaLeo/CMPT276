@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
-  
+  #we need this so that the css is not messed up
+  layout false;
   def index
     render('index');
   end

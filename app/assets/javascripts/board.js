@@ -1,3 +1,5 @@
+
+
 $(document).ready(function(){
     var canvas = new fabric.Canvas('drawingCanvas');
   canvas.isDrawingMode = false;

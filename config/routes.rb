@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   resources :users
   #add paths to update, delete, create, show, etc. for boards
   resources :boards
+  resources :pages
 end
