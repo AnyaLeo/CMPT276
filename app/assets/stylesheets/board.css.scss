@@ -1,3 +1,7 @@
+body{
+  padding-top: 50px;
+}
+
 //toolbar related
 ul {
   display: flex;
@@ -8,10 +12,11 @@ ul {
   height: 50px;
   line-height: 50px;
   background-color: #eee;
-
   list-style-type: none;
   margin: 0;
   padding: 0;
+  z-index: 999;
+
 }
 
 #boardName{
@@ -38,27 +43,6 @@ ul {
 li button:hover{
   background-color: #a6a6a6;
 }
-//end navbar
-
-#notesContainer{
-  position: relative;
-  padding-top: 50px;
-  min-height: 100%;
-}
-
-#imgForm{
-  display: none;
-  padding-top: 50px;
-}
-
-//notes
-.movable{
-  position: absolute;
-  font-size: 20px;
-  width: 300px;
-  height: 100px;
-  padding: 0.5em;
-}
 
 //dropdown for background button
 .dropdown {
@@ -67,7 +51,7 @@ li button:hover{
 }
 
 .dropdown .bgChange {
-  font-size: 16px;  
+  font-size: 16px;
   border: none;
   outline: none;
   color: white;
@@ -105,4 +89,30 @@ li button:hover{
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+//end navbar
+
+#notesContainer{
+  z-index: 900;
+  position: absolute;
+}
+
+#imgForm{
+  display: none;
+  padding-top: 50px;
+}
+
+#drawingCanvas{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+//notes
+.movable{
+  position: absolute;
+  font-size: 20px;
+  width: 300px;
+  height: 100px;
+  padding: 0.5em;
 }

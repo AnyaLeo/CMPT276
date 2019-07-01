@@ -11,9 +11,10 @@
   <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script type='text/javascript' src='http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.0/fabric.min.js'></script>
+
   <link rel="stylesheet" href="board.css">
   <%= javascript_include_tag "board" %>
-  <script src="board.js"></script>
 
 </head>
 <body>
@@ -31,7 +32,8 @@
             <a href="#">more nothing</a>
     </div></li>
     <li><button class="tool" id="delete">Delete Note</button></li>
-    
+    <li><button class="tool" id="draw">Draw</button></li>
+
   </ul>
 
   <form id="imgForm">
@@ -40,6 +42,7 @@
   </form>
 
   <div id="notesContainer"></div>
+  <canvas id="drawingCanvas"></canvas>
 
 </body>
 </html>
