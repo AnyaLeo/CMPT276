@@ -6,9 +6,17 @@
         <li><%= link_to "Home",    root_path %></li>
         <li><%= link_to "Boards", '#' %></li>
         <li><%= link_to "Groups", '#' %></li>
-        <li><%= link_to "Profile", '#' %></li>
+        <% if logged_in? %>
+          <li><%= link_to "Profile", current_user %></li>
+        <% else %>
+          <li><%= link_to "Profile", '#' %></li>
+        <% end %>
         <li><%= link_to "Help",    help_path %></li>
-        <li><%= link_to "Log in", '#' %></li>
+        <% if logged_in? %>
+          <li><%= link_to "Log out", logout_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Log in", login_path %></li>
+        <% end %>
       </ul>
     </nav>
   </div>
