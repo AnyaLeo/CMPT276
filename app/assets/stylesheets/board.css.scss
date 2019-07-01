@@ -1,9 +1,6 @@
-/*
-*=require board
-*/
-
 body{
-  padding-top: 50px;
+  padding-top: 10px;
+  padding-left: 10px;
 }
 
 //toolbar related
@@ -20,15 +17,12 @@ ul {
   margin: 0;
   padding: 0;
   z-index: 999;
-
 }
 
 #boardName{
   font-size: 20px;
-  padding-left: 10px;
-  padding-top: 2px;
-  padding-right: 10px;
-  display: inline;
+  padding-left: 13px;
+  padding-right: 13px;
 }
 
 .tool{
@@ -114,7 +108,6 @@ li button:hover{
 
 //notes
 .movable{
-  position: absolute;
   font-size: 20px;
   width: 300px;
   height: 100px;

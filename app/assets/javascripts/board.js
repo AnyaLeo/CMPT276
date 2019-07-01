@@ -1,12 +1,10 @@
-
-
 $(document).ready(function(){
-    var canvas = new fabric.Canvas('drawingCanvas');
+  var canvas = new fabric.Canvas('drawingCanvas');
   canvas.isDrawingMode = false;
   canvas.freeDrawingBrush.width = 5;
   canvas.freeDrawingBrush.color = "black";
-  canvas.setHeight(3920);
-  canvas.setWidth(3970);
+  canvas.setHeight(4000);
+  canvas.setWidth(4000);
 
   var deleteStatus = false;
 
@@ -15,7 +13,7 @@ $(document).ready(function(){
     deleteStatus = false;
     var newDiv = '<div class="movable resizable" contenteditable="true">New note</div>';
     $('#notesContainer').append(newDiv);
-    $(".movable").draggable({containment : [30, 80, 4000, 4000] });
+    $(".movable").draggable({containment : [30, 80, 4000, 4000] }).css("position", "absolute");
     $('.resizable').resizable();
   });
 
