@@ -39,7 +39,9 @@ li button:hover{
 //end navbar
 
 #notesContainer{
+  position: relative;
   padding-top: 50px;
+  min-height: 100%;
 }
 
 #imgForm{

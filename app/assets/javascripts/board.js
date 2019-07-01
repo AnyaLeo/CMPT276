@@ -6,7 +6,7 @@ $(document).ready(function(){
     deleteStatus = false;
     var newDiv = '<div class="movable resizable" contenteditable="true">New note</div>';
     $("#notesContainer").append(newDiv);
-    $(".movable").draggable();
+    $(".movable").draggable({containment : [0, 50, 4000, 4000] });
     $('.resizable').resizable();
   });
 
@@ -20,7 +20,7 @@ $(document).ready(function(){
     var imgSrc = $('input[name=imgLink]').val();
 
     $('#imgForm').trigger("reset");
-    var newDiv = '<div class="movable"><img class="resizable" src="' + imgSrc + '" alt="Surprised Pikachu"></div>';
+    var newDiv = '<div class="movable"><img class="resizable" src="' + imgSrc + '" alt="Image"></div>';
     $("#notesContainer").append(newDiv);
     $('.movable').draggable();
     $('.resizable').resizable();
