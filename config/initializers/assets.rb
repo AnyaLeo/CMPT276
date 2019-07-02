@@ -14,3 +14,6 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
 Rails.application.config.assets.precompile += %w( after_login.css )
+Rails.application.config.assets.precompile += %w( custom.css )
+Rails.application.config.assets.precompile += %w( board.css )
+Rails.application.config.assets.precompile += %w( board.js )
