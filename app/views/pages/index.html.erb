@@ -12,7 +12,15 @@
                 	<a href="#boards">Boards</a>
                     <a href="#groups">Groups</a>
                     <a href="#profile">Profile</a>
-                   	<a href="logout.html">Logout</a>
+					<a href="logout.html">Logout</a>
+
+					<% if logged_in? %>
+						<li><%= link_to "Log out", logout_path, method: :delete %>
+						  </li>
+					<% else %>
+						<li> <%= link_to "Log in", login_path %></li>
+					<% end %>
+					
                 </ul>
             </nav>
         </header>

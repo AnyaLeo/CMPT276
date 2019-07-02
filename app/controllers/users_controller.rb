@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       log_in @user
       flash[:success] = "Welcome to the Sample App!"
       # changing the redirecting to user to the index page b/c bugs, FIX IN ITERATION 2
-      # redirect_to @user
+      #redirect_to @user
       redirect_to :controller => 'pages', :action => 'index'
     else
       render 'new'
