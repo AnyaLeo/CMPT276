@@ -9,12 +9,11 @@
             <nav>
                 <ul>
                 	<a href="#multibrain">Multibrain</a>
-                	<a href="#boards">Boards</a>
-                    <a href="#groups">Groups</a>
-                    <a href="#profile">Profile</a>
-					
 
 					<% if logged_in? %>
+						<a href="#boards">Boards</a>
+						<a href="#groups">Groups</a>
+						<a href="#profile">Profile</a>
 						<li><%= link_to "Log out", logout_path, method: :delete %>
 						  </li>
 					<% else %>
@@ -32,7 +31,10 @@
                 	<p> Through using this web application, users can create boards, where they can invite their teammates to collaborate on projects.</p>
 
                 </div>
-            </section>
+			</section>
+			
+			<% if logged_in? %>
+
             <section id="boards">
                 <div class="inner-section">
                 	<h2> Boards</h2>
@@ -93,7 +95,8 @@
 					</body>
 					</head>
                 </div>
-            </section>
+			</section>
+			
             <section id="groups">
                 <div class="inner-section">
                 	<h3> Groups</h3>
@@ -116,7 +119,9 @@
 					<!--<input type = "button" value = "Update Profile" onclick = "Update();" />-->
 					<!-- click on button to reload page but with updated information -->
                 </div>
-            </section>
+			</section>
+			
+			<% end %> 
         </main>
         <footer>
 
