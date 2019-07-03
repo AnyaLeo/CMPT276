@@ -100,7 +100,20 @@
 
 #boardBody #imgForm{
   display: none;
-  padding-top: 50px;
+  padding: 5px;
+  font-size: 20px;
+}
+
+#boardBody #imgForm #imgLinkInput{
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+#boardBody #imgForm #imgLinkInput:hover{
+  background-color: #eee;
 }
 
 #boardBody #drawingCanvas{
