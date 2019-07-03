@@ -1,9 +1,10 @@
-body{
-  padding-top: 50px;
+#boardBody{
+  padding-top: 10px;
+  padding-left: 10px;
 }
 
 //toolbar related
-ul {
+#boardBody ul {
   display: flex;
   position: fixed;
   top: 0;
@@ -16,19 +17,18 @@ ul {
   margin: 0;
   padding: 0;
   z-index: 999;
-
 }
 
-#boardName{
-  font-size: 20px;
-  padding-left: 10px;
-  padding-top: 2px;
-  padding-right: 10px;
-  display: inline;
+#boardBody #boardName{
+  font-size: 25px;
+  padding-left: 13px;
+  padding-right: 13px;
+  padding-top: 4px;
 }
 
-.tool{
-  padding: 13px;
+#boardBody .tool{
+  padding-left: 13px;
+  padding-right: 13px;
   text-decoration: none;
   font-size: 20px;
   display: inline;
@@ -40,17 +40,17 @@ ul {
   overflow: hidden;
 }
 
-li button:hover{
+#boardBody button:hover{
   background-color: #a6a6a6;
 }
 
 //dropdown for background button
-.dropdown {
+#boardBody li div .dropdown {
   float: left;
   overflow: hidden;
 }
 
-.dropdown .bgChange {
+#boardBody li div .dropdown .bgChange {
   font-size: 16px;
   border: none;
   outline: none;
@@ -61,7 +61,7 @@ li button:hover{
   margin: 0;
 }
 
-.tool a:hover, .dropdown:hover .bgChange {
+#boardBody li div .tool a:hover, .dropdown:hover .bgChange {
   background-color: red;
 }
 
@@ -69,6 +69,7 @@ li button:hover{
   display: none;
   position: absolute;
   background-color: #f9f9f9;
+  font-size: 20px;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
@@ -92,24 +93,37 @@ li button:hover{
 }
 //end navbar
 
-#notesContainer{
+#boardBody #notesContainer{
   z-index: 900;
   position: absolute;
 }
 
-#imgForm{
+#boardBody #imgForm{
   display: none;
-  padding-top: 50px;
+  padding: 5px;
+  font-size: 20px;
 }
 
-#drawingCanvas{
+#boardBody #imgForm #imgLinkInput{
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+#boardBody #imgForm #imgLinkInput:hover{
+  background-color: #eee;
+}
+
+#boardBody #drawingCanvas{
   position: absolute;
   top: 0;
   left: 0;
 }
 
 //notes
-.movable{
+#boardBody .movable{
   font-size: 20px;
   width: 300px;
   height: 100px;

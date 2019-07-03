@@ -17,11 +17,11 @@
   <%= javascript_include_tag "board" %>
 
 </head>
-<body>
+<body id="boardBody">
 
   <ul>
     <li><%= link_to '<button class="tool"">Back</button>'.html_safe, "../pages/index" %></li>
-    <h1 id="boardName">New Board</h1>
+    <p id="boardName"><b>New Board</b></p>
     <li><button class="tool" id="add">Add Text</button></li>
     <li><button class="tool" id="addImage">Add Image</button></li>
     <li><div class="dropdown">
@@ -37,7 +37,7 @@
   </ul>
 
   <form id="imgForm">
-    Image link: <input type="text" name="imgLink">
+    Image Link: <input type="text" name="imgLink">
     <button type="button" id="imgLinkInput">Submit</button>
   </form>
 
