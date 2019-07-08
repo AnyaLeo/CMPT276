@@ -1,9 +1,5 @@
 class PagesController < ApplicationController
   
-  def index
-    render('index');
-  end
-  
   def home
   end
 
@@ -24,6 +20,7 @@ class PagesController < ApplicationController
   
   def profile
   end
+  
 end
 
 

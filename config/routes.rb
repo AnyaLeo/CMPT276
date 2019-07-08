@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   get 'sessions/new'
   root 'pages#home'
-  get  'pages/index'
   get  '/help',    to: 'pages#help'
   get  '/about',   to: 'pages#about'
   get  '/contact', to: 'pages#contact'
@@ -13,4 +12,6 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   resources :users
+  #add paths to update, delete, create, show, etc. for boards
+  resources :boards
 end
