@@ -16,6 +16,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'duktape'
+gem 'faker'
+gem 'will_paginate'           
+gem 'bootstrap-will_paginate'
 
 group :development, :test do
   gem 'byebug',  platforms: [:mri, :mingw, :x64_mingw]
