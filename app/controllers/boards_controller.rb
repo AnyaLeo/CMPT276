@@ -1,6 +1,6 @@
 class BoardsController < ApplicationController
   before_action :set_board, only: [:show, :edit, :update, :destroy]
-  
+
   # GET /boards
   # GET /boards.json
   def index
@@ -28,8 +28,9 @@ class BoardsController < ApplicationController
 
     respond_to do |format|
       if @board.save
-        format.html { redirect_to @board, notice: 'Board was successfully created.' }
+        format.html { redirect_to "/boards/new", notice: 'Board was successfully created.' }
         format.json { render :show, status: :created, location: @board }
+        @board.update(:canvas, "{\"objects\":[],\"background\":\"\"}")
       else
         format.html { render :new }
         format.json { render json: @board.errors, status: :unprocessable_entity }
@@ -69,6 +70,6 @@ class BoardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def board_params
-      params.require(:board).permit(:title)
+      params.require(:board).permit(:title, :canvas)
     end
 end

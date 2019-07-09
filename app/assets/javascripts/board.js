@@ -3,8 +3,13 @@ $(document).ready(function(){
   canvas.isDrawingMode = false;
   canvas.freeDrawingBrush.width = 5;
   canvas.freeDrawingBrush.color = "black";
-  canvas.setHeight(4000);
-  canvas.setWidth(4000);
+  // canvas.setHeight(4000);
+  // canvas.setWidth(4000);
+  // var canvasContent = '<%= @board.canvas %>';
+  // console.log(canvasContent);
+  // console.log($('.board_canvas').data('temp'));
+  var data="<%=@canvas%>";
+  console.log(data);
 
   var deleteStatus = false;
 

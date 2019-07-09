@@ -3,6 +3,16 @@
     <head>
         <title>Multibrain</title>
         <%= stylesheet_link_tag "after_login" %>
+
+        <!-- to create a temporary empty canvas for new boards -->
+        <script type='text/javascript' src='http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.0/fabric.min.js'></script>
+        <script>
+          var canvas = new fabric.Canvas('drawingCanvas');
+          canvas.setHeight(4000);
+          canvas.setWidth(4000);
+          console.log(JSON.stringify(canvas.toDatalessJSON()));
+        </script>
+
     </head>
     <body>
         <header>
@@ -32,19 +42,32 @@
 
                 </div>
 			</section>
-			
+
 			<% if logged_in? %>
 
+            <canvas id="tempCanvas" style="display:none;"></canvas>
             <section id="boards">
                 <div class="inner-section">
                 	<h2> Boards</h2>
                 	<p> Here is a list of all of your boards. </p>
+                  <% @boards.each do |board| %>
+                    <li>
+                      <td><%= board.title %></td>
+                      <td><%= link_to 'Show Board', @board %></td>
+                      <td><%= link_to 'Destroy', board, method: :destroy, data: { confirm: 'Are you sure?' } %></td>
+                    </li>
+                  <% end %>
 					</style>
 					</head>
 					<body>
 						<!-- Trigger/Open The Modal -->
 						<!-- Apparently dangerous may need to change later -->
-						<%= link_to '<button type="button">Create New Board</button>'.html_safe, "../boards/new" %>
+            <%= form_for(@board) do |f| %>
+              <%= f.label :title %>
+              <%= f.text_field :title, class: 'form-control' %>
+              <%= f.submit "Create New Board", class: "btn btn-primary" %>
+            <% end %>
+						<!-- <%= link_to '<button type="button">Create New Board</button>'.html_safe, "../boards/new" %> -->
 
 						<!-- The Modal -->
 						<!--<div id="myModal" class="modal">-->
@@ -96,7 +119,7 @@
 					</head>
                 </div>
 			</section>
-			
+
             <section id="groups">
                 <div class="inner-section">
                 	<h3> Groups</h3>
@@ -120,8 +143,8 @@
 					<!-- click on button to reload page but with updated information -->
                 </div>
 			</section>
-			
-			<% end %> 
+
+			<% end %>
         </main>
         <footer>
 
