@@ -1,23 +1,23 @@
 <% provide(:title, 'Boards') %>
  <div class="inner-section">
-                	<h1> Boards</h1>
-					</style>
-					</head>
-					<body>
-            <p> Here is a list of all of your boards. </p>
-              <% @user.boards.each do |board| %>
-                <li>
-                  <td><%= board.title %></td>
-                  <td><%= link_to 'Show Board', board %></td>
-                  <td><%= link_to 'Destroy', board, method: :delete %></td>
-                </li>
-              <% end %>
-						<!-- Trigger/Open The Modal -->
-            <%= form_for(@board) do |f| %>
-              <%= f.label :title %>
-              <%= f.text_field :title, class: 'form-control' %>
-              <%= f.submit "Create New Board", class: "btn btn-primary" %>
-            <% end %>
+  <h1> Boards</h1>
+  </style>
+  </head>
+  <body>
+    <p> Here is a list of all of your boards. </p>
+    <% @user.boards.each do |board| %>
+      <li>
+      <td><%= board.title %></td>
+      <td><%= link_to 'Show Board', board %></td>
+      <td><%= link_to 'Destroy', board, method: :delete %></td>
+      </li>
+    <% end %>
+
+    <%= form_for(@board) do |f| %>
+      <%= f.label :title %>
+      <%= f.text_field :title, class: 'form-control' %>
+      <%= f.submit "Create New Board", class: "btn btn-primary" %>
+    <% end %>
 
 						<!-- The Modal -->
 						<!--<div id="myModal" class="modal">-->
@@ -67,4 +67,4 @@
 						</script>
 					</body>
 					</head>
-                </div>
+  </div>
