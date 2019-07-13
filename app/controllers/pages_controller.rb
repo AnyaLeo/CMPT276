@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   #we need this so that the css is not messed up
-  layout false;
+  # layout false;
   def index
     @board = Board.new
     @boards = Board.all
