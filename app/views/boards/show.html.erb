@@ -20,14 +20,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script type='text/javascript' src='http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.0/fabric.min.js'></script>
 
-  <link rel="stylesheet" href="board.css">
   <%= javascript_include_tag "board" %>
 
 </head>
 <body id="boardBody">
 
   <ul>
-    <%= @board.canvas %>
+    <div class="content" data-id="<%= @board.canvas_content %>"></div>
+    <div class="boardId" data-id="<%= @board[:id] %>"></div>
 
     <li><%= link_to '<button class="tool"">Back</button>'.html_safe, "../pages/index" %></li>
     <p id="boardName"><b> <%= @board.title %> </b></p>
@@ -42,6 +42,7 @@
     </div></li>
     <li><button class="tool" id="delete">Delete Note</button></li>
     <li><button class="tool" id="draw">Draw</button></li>
+    <li><button class="tool" id="save">Save</button></li>
 
   </ul>
 

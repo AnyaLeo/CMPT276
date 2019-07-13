@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get  '/logout',  to: 'sessions#destroy'
   resources :users
   #add paths to update, delete, create, show, etc. for boards
+  put  '/boards/:id/save_board', to: 'boards#save_board'
   resources :boards
   resources :pages
 end

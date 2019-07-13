@@ -3,13 +3,14 @@ $(document).ready(function(){
   canvas.isDrawingMode = false;
   canvas.freeDrawingBrush.width = 5;
   canvas.freeDrawingBrush.color = "black";
-  // canvas.setHeight(4000);
-  // canvas.setWidth(4000);
-  // var canvasContent = '<%= @board.canvas %>';
-  // console.log(canvasContent);
-  // console.log($('.board_canvas').data('temp'));
-  var data="<%=@canvas%>";
-  console.log(data);
+
+  var onLoadContent = $(".content").attr("data-id");
+  console.log(onLoadContent);
+  canvas.loadFromJSON(onLoadContent);
+  canvas.setHeight(4000);
+  canvas.setWidth(4000);
+  var boardId = $(".boardId").attr("data-id");
+  console.log(boardId)
 
   var deleteStatus = false;
 
@@ -56,6 +57,20 @@ $(document).ready(function(){
     else {
       canvas.isDrawingMode = true;
     }
+  });
+
+  //save canvas
+  $('#save').click(function(){
+    var newCanvas = JSON.stringify(canvas);
+    $.ajax({
+      url: "/boards/" + boardId + "/save_board",
+      method: "put",
+      data: { 'board_id': boardId,
+              'canvas': newCanvas},
+      success: function(){
+                console.log('success');
+      }
+    });
   });
 
 });

@@ -1,4 +1,7 @@
 class BoardsController < ApplicationController
+  # skip_before_action :verify_authenticity_token
+  protect_from_forgery with: :null_session
+
   before_action :set_board, only: [:show, :edit, :update, :destroy]
 
   # GET /boards
@@ -28,9 +31,9 @@ class BoardsController < ApplicationController
 
     respond_to do |format|
       if @board.save
-        format.html { redirect_to "/boards/new", notice: 'Board was successfully created.' }
+        @board.update_attribute(:canvas_content, "{\"objects\":[],\"background\":\"\"}")
+        format.html { redirect_to @board }
         format.json { render :show, status: :created, location: @board }
-        @board.update(:canvas, "{\"objects\":[],\"background\":\"\"}")
       else
         format.html { render :new }
         format.json { render json: @board.errors, status: :unprocessable_entity }
@@ -52,6 +55,14 @@ class BoardsController < ApplicationController
     end
   end
 
+  def save_board
+    @board = Board.find(params[:board_id])
+    @board.update_attribute(:canvas_content, params[:canvas])
+    # respond_to do |format|
+    #   format.all { render :nothing => true, :status => 200 }
+    # end
+  end
+
   # DELETE /boards/1
   # DELETE /boards/1.json
   def destroy
@@ -70,6 +81,6 @@ class BoardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def board_params
-      params.require(:board).permit(:title, :canvas)
+      params.require(:board).permit(:title, :canvas_content)
     end
 end
