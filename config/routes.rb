@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   get  'sessions/new'
   root 'pages#home'
-  get  'pages/index'
   get  '/help',    to: 'pages#help'
   get  '/about',   to: 'pages#about'
   get  '/contact', to: 'pages#contact'

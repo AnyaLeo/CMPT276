@@ -1,7 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-/* mixins, variables, etc. */
+///////////////////////////////////////////* mixins, variables, etc. *///////////////////////////////////////////////
 
 $gray-medium-light: #afafaf;
 
@@ -18,11 +18,10 @@ ul {
 }
 
 body {
-  padding-top: 60px;
-  // from after_login
   margin: 0;
   margin-top: 50px;
   font-family: sans-serif;
+  padding-top: 50px;
 }
 
 section {
@@ -40,7 +39,7 @@ textarea {
   }
 }
 
-/* typography */
+//////////////////////////////////////////////////////////////////* typography *//////////////////////////////////////////////////
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
@@ -68,7 +67,7 @@ p {
 }
 
 
-/* header */
+///////////////////////////////////////////////////////////////* header *////////////////////////////////////////////////////////////
 
 #logo {
   float: left;
@@ -85,7 +84,7 @@ p {
   }
 }
 
-/* footer */
+/////////////////////////////////////////////////////////////////////////////////* footer */////////////////////////////////////////////////////////////////////////
 
 footer {
   margin-top: 45px;
@@ -111,7 +110,7 @@ footer {
   }
 }
 
-/* miscellaneous */
+/////////////////////////////////////////////////////////////////////* miscellaneous *///////////////////////////////////////////////////////
 
 .debug_dump {
   clear: both;
@@ -121,7 +120,7 @@ footer {
   @include box_sizing;
 }
 
-/* sidebar */
+///////////////////////////////////////////////////////////////////////////////////* sidebar *///////////////////////////////////////////////
 
 aside {
   section.user_info {
@@ -158,7 +157,7 @@ aside {
   margin-top: 15px;
 }
 
-/* forms */
+//////////////////////////////////////////////////////* forms *////////////////////////////////////////////////////////
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
@@ -183,5 +182,31 @@ input {
   @extend .has-error;
   .form-control {
     color: $state-danger-text;
+  }
+}
+
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
+}
+
+//////////////////////////////////////////////////////////* Users index *//////////////////////////////////////////
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter;
   }
 }
