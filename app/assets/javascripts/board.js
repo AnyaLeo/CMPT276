@@ -28,6 +28,7 @@ $(document).ready(function(){
     $('#imgForm').toggle();
   });
 
+  //on submitting img link
   $('#imgLinkInput').click(function(){
     deleteStatus = false;
     var imgSrc = $('input[name=imgLink]').val();
@@ -41,11 +42,11 @@ $(document).ready(function(){
   //allow user to delete notes
   $('#delete').click(function(){
     deleteStatus = true;
-  });
+    });
 
-  $('#notesContainer').click(function(e){
-    if (deleteStatus) {
-      $(e.target).remove();
+    $('#notesContainer').click(function(e){
+      if (deleteStatus) {
+        $(e.target).remove();
     }
   });
 

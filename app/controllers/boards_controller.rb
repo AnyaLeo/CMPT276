@@ -60,9 +60,6 @@ class BoardsController < ApplicationController
   def save_board
     @board = Board.find(params[:board_id])
     @board.update_attribute(:canvas_content, params[:canvas])
-    # respond_to do |format|
-    #   format.all { render :nothing => true, :status => 200 }
-    # end
   end
 
   # DELETE /boards/1
