@@ -5,6 +5,13 @@
       <h1>
         <%= gravatar_for @user %>
         <%= @user.name %>
+        <% @user.boards.each do |board| %>
+          <% id = board.id %>
+          <% @board = Board.find_by_id(id) %>
+          <li>
+            <td><%= @board.id %></td>
+          </li>
+        <% end %>
       </h1>
     </section>
   </aside>

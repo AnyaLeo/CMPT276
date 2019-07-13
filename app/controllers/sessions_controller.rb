@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       # Log the user in and redirect to the user's show page.
       log_in user
       # temporarily redirecting to the index page
-      #redirect_to user 
+      #redirect_to user
       redirect_to :controller => 'pages', :action => 'index'
     else
       # Create an error message

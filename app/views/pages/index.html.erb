@@ -6,12 +6,6 @@
 
         <!-- to create a temporary empty canvas for new boards -->
         <script type='text/javascript' src='http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.0/fabric.min.js'></script>
-        <script>
-          var canvas = new fabric.Canvas('drawingCanvas');
-          canvas.setHeight(4000);
-          canvas.setWidth(4000);
-          console.log(JSON.stringify(canvas.toDatalessJSON()));
-        </script>
 
     </head>
     <body>
@@ -50,7 +44,7 @@
                 <div class="inner-section">
                 	<h2> Boards</h2>
                 	<p> Here is a list of all of your boards. </p>
-                  <% @boards.each do |board| %>
+                  <% @user.boards.each do |board| %>
                     <li>
                       <td><%= board.title %></td>
                       <td><%= link_to 'Show Board', @board %></td>

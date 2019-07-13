@@ -1,14 +1,36 @@
-<p id="Notice"><%= notice %></p>
+<!-- I'm sure there's a better way to check if a user has access to a board -->
+<!-- Feel free to change it, I just needed it to work-->
+<% user_found = false %>
+<% @board.users.each do |user| %>
+  <% if session["user_id"] == user.id %>
+    <% user_found = true %>
+  <% end %>
+<% end %>
 
-<!-- <p>
-  <strong>Title:</strong>
-  <%= @board.title %>
-</p> -->
+<% if user_found == false %>
+  <script type="text/javascript">
+    window.location.href="/pages/index"
+  </script>
+<% end %>
 
-
+<!-- <div class="row">
+  <aside class="col-md-4">
+    <section class="board_info">
+      <h1>
+        <%= @board.title %>
+        <% @board.users.each do |user| %>
+          <% id = user.id %>
+          <% @user = User.find_by_id(id) %>
+          <li>
+            <td><%= @user.name %></td>
+          </li>
+        <% end %>
+      </h1>
+    </section>
+  </aside>
+</div> -->
 
 <!-- <=% render 'form', board: @board %>
-
 <%= link_to 'Back', boards_path %> -->
 
 <!DOCTYPE html>
@@ -43,6 +65,7 @@
     <li><button class="tool" id="delete">Delete Note</button></li>
     <li><button class="tool" id="draw">Draw</button></li>
     <li><button class="tool" id="save">Save</button></li>
+    <li><button class="tool" id="people">People</button></li>
 
   </ul>
 

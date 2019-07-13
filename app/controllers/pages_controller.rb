@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   def index
     @board = Board.new
     @boards = Board.all
+    @user = User.find_by_id(session["user_id"])
   end
 
   def home

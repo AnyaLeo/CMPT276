@@ -28,10 +28,12 @@ class BoardsController < ApplicationController
   # POST /boards.json
   def create
     @board = Board.new(board_params)
+    @user = User.find(session["user_id"])
 
     respond_to do |format|
       if @board.save
         @board.update_attribute(:canvas_content, "{\"objects\":[],\"background\":\"\"}")
+        @user.boards << @board
         format.html { redirect_to @board }
         format.json { render :show, status: :created, location: @board }
       else
