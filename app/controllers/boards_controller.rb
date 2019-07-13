@@ -1,6 +1,10 @@
 class BoardsController < ApplicationController
+  protect_from_forgery with: :null_session
   before_action :set_board, only: [:show, :edit, :update, :destroy]
-  
+
+  layout false, only: [:show]
+  layout "board", only: [:show]
+
   # GET /boards
   # GET /boards.json
   def index
@@ -25,10 +29,13 @@ class BoardsController < ApplicationController
   # POST /boards.json
   def create
     @board = Board.new(board_params)
+    @user = User.find(session["user_id"])
 
     respond_to do |format|
       if @board.save
-        format.html { redirect_to @board, notice: 'Board was successfully created.' }
+        @board.update_attribute(:canvas_content, "{\"objects\":[],\"background\":\"\"}")
+        @user.boards << @board
+        format.html { redirect_to @board }
         format.json { render :show, status: :created, location: @board }
       else
         format.html { render :new }
@@ -51,12 +58,18 @@ class BoardsController < ApplicationController
     end
   end
 
+  def save_board
+    @board = Board.find(params[:board_id])
+    @board.update_attribute(:canvas_content, params[:canvas])
+  end
+
   # DELETE /boards/1
   # DELETE /boards/1.json
   def destroy
+    @board = Board.find(params[:id])
     @board.destroy
     respond_to do |format|
-      format.html { redirect_to boards_url, notice: 'Board was successfully destroyed.' }
+      format.html { redirect_to boards_url }
       format.json { head :no_content }
     end
   end
@@ -69,6 +82,6 @@ class BoardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def board_params
-      params.require(:board).permit(:title)
+      params.require(:board).permit(:title, :canvas_content)
     end
 end

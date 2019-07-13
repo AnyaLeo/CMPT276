@@ -3,8 +3,14 @@ $(document).ready(function(){
   canvas.isDrawingMode = false;
   canvas.freeDrawingBrush.width = 5;
   canvas.freeDrawingBrush.color = "black";
+
+  var onLoadContent = $(".content").attr("data-id");
+  console.log(onLoadContent);
+  canvas.loadFromJSON(onLoadContent);
   canvas.setHeight(4000);
   canvas.setWidth(4000);
+  var boardId = $(".boardId").attr("data-id");
+  console.log(boardId)
 
   var deleteStatus = false;
 
@@ -22,6 +28,7 @@ $(document).ready(function(){
     $('#imgForm').toggle();
   });
 
+  //on submitting img link
   $('#imgLinkInput').click(function(){
     deleteStatus = false;
     var imgSrc = $('input[name=imgLink]').val();
@@ -35,11 +42,11 @@ $(document).ready(function(){
   //allow user to delete notes
   $('#delete').click(function(){
     deleteStatus = true;
-  });
+    });
 
-  $('#notesContainer').click(function(e){
-    if (deleteStatus) {
-      $(e.target).remove();
+    $('#notesContainer').click(function(e){
+      if (deleteStatus) {
+        $(e.target).remove();
     }
   });
 
@@ -51,6 +58,20 @@ $(document).ready(function(){
     else {
       canvas.isDrawingMode = true;
     }
+  });
+
+  //save canvas
+  $('#save').click(function(){
+    var newCanvas = JSON.stringify(canvas);
+    $.ajax({
+      url: "/boards/" + boardId + "/save_board",
+      method: "put",
+      data: { 'board_id': boardId,
+              'canvas': newCanvas},
+      success: function(){
+                console.log('success');
+      }
+    });
   });
 
 });
