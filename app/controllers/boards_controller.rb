@@ -1,7 +1,9 @@
 class BoardsController < ApplicationController
   protect_from_forgery with: :null_session
-
   before_action :set_board, only: [:show, :edit, :update, :destroy]
+
+  layout false, only: [:show]
+  layout "board", only: [:show]
 
   # GET /boards
   # GET /boards.json

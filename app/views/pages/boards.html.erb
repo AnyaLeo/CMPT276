@@ -1,13 +1,23 @@
 <% provide(:title, 'Boards') %>
  <div class="inner-section">
                 	<h1> Boards</h1>
-                	<p> Here is a list of all of your boards. </p>
 					</style>
 					</head>
 					<body>
+            <p> Here is a list of all of your boards. </p>
+              <% @user.boards.each do |board| %>
+                <li>
+                  <td><%= board.title %></td>
+                  <td><%= link_to 'Show Board', @board %></td>
+                  <td><%= link_to 'Destroy', board, method: :destroy, data: { confirm: 'Are you sure?' } %></td>
+                </li>
+              <% end %>
 						<!-- Trigger/Open The Modal -->
-						<!-- Apparently dangerous may need to change later -->
-						<%= link_to '<button type="button">Create New Board</button>'.html_safe, "../boards/new" %>
+            <%= form_for(@board) do |f| %>
+              <%= f.label :title %>
+              <%= f.text_field :title, class: 'form-control' %>
+              <%= f.submit "Create New Board", class: "btn btn-primary" %>
+            <% end %>
 
 						<!-- The Modal -->
 						<!--<div id="myModal" class="modal">-->
