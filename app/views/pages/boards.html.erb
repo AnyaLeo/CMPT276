@@ -8,8 +8,8 @@
               <% @user.boards.each do |board| %>
                 <li>
                   <td><%= board.title %></td>
-                  <td><%= link_to 'Show Board', @board %></td>
-                  <td><%= link_to 'Destroy', board, method: :destroy, data: { confirm: 'Are you sure?' } %></td>
+                  <td><%= link_to 'Show Board', board %></td>
+                  <td><%= link_to 'Destroy', board, method: :delete %></td>
                 </li>
               <% end %>
 						<!-- Trigger/Open The Modal -->

@@ -66,9 +66,10 @@ class BoardsController < ApplicationController
   # DELETE /boards/1
   # DELETE /boards/1.json
   def destroy
+    @board = Board.find(params[:id])
     @board.destroy
     respond_to do |format|
-      format.html { redirect_to boards_url, notice: 'Board was successfully destroyed.' }
+      format.html { redirect_to boards_url }
       format.json { head :no_content }
     end
   end
