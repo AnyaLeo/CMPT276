@@ -6,9 +6,11 @@ $(document).ready(function(){
 
   var onLoadContent = $(".content").attr("data-id");
   console.log(onLoadContent);
-  canvas.loadFromJSON(onLoadContent);
-  canvas.setHeight(4000);
-  canvas.setWidth(4000);
+  canvas.loadFromJSON(onLoadContent, function() {
+    canvas.renderAll();
+  });
+  canvas.setHeight(2500);
+  canvas.setWidth(2500);
   var boardId = $(".boardId").attr("data-id");
   console.log(boardId)
 
@@ -17,10 +19,12 @@ $(document).ready(function(){
   //add new text note on click
   $('#add').click(function(){
     deleteStatus = false;
-    var newDiv = '<div class="movable resizable" contenteditable="true">New note</div>';
-    $('#notesContainer').append(newDiv);
-    $('.movable').draggable({containment : [30, 80, 4000, 4000] }).css("position", "absolute");
-    $('.resizable').resizable();
+    var textNote = new fabric.IText('New Note', {
+      left: 0,
+      top: 0,
+    });
+    canvas.add(textNote);
+
   });
 
   $('#addImage').click(function(){
@@ -33,10 +37,10 @@ $(document).ready(function(){
     deleteStatus = false;
     var imgSrc = $('input[name=imgLink]').val();
     $('#imgForm').trigger("reset");
-    var newDiv = '<div class="movable"><img class="resizable" src="' + imgSrc + '" alt="Image"></div>';
-    $('#notesContainer').append(newDiv);
-    $('.movable').draggable({containment : [30, 80, 4000, 4000] }).css("position", "absolute");
-    $('.resizable').resizable();
+    fabric.Image.fromURL(imgSrc, function(newImg) {
+      var img = newImg.set({ left: 0, top: 0 });
+      canvas.add(img);
+    });
   });
 
   //allow user to delete notes
