@@ -16,4 +16,9 @@ Rails.application.routes.draw do
   #add paths to update, delete, create, show, etc. for boards
   resources :boards
   resources :pages
+
+  get '/', to: 'boards#index'
+  post '/updateline', to: 'boards#show'
+
+  mount ActionCable.server => '/cable'
 end

@@ -1,3 +1,24 @@
+//= require cable
+//= require_self
+//= require_tree .
+
+
+this.App = {};
+
+App.cable = ActionCable.createConsumer();
+
+App.messages = App.cable.subscriptions.create('ApplicationCable::Channel', {
+
+  // Called when there's incoming data on the websocket for this channel
+  received: function(data) {
+      canvas.isDrawingMode = data.canvas.isDrawingMode;
+  },
+
+  sendMessage: function(messageBody) {
+
+  }
+});
+
 $(document).ready(function(){
   var canvas = new fabric.Canvas('drawingCanvas');
   canvas.isDrawingMode = false;
@@ -52,5 +73,4 @@ $(document).ready(function(){
       canvas.isDrawingMode = true;
     }
   });
-
 });

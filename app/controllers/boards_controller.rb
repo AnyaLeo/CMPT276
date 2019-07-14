@@ -10,6 +10,9 @@ class BoardsController < ApplicationController
   # GET /boards/1
   # GET /boards/1.json
   def show
+    ActionCable.server.broadcast ‘line’,
+      isDrawingMode: params[:isDrawingMode]
+    head :ok
   end
 
   # GET /boards/new

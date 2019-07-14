@@ -16,3 +16,6 @@
 //= require_tree .
 //= require jquery
 //= require bootstrap
+//= require cable
+//= require_tree ./channels
+//= require_tree .
