@@ -50,6 +50,8 @@ $(document).ready(function(){
     deleteStatus = true;
     });
 
+
+    
     $('#notesContainer').click(function(e){
       if (deleteStatus) {
         $(e.target).remove();
@@ -79,5 +81,28 @@ $(document).ready(function(){
       }
     });
   });
+
+  //delete the selected objects
+  function deleteObjects(){
+	var activeObject = canvas.getActiveObject(),
+  activeGroup = canvas.getActiveGroup();
+  if (activeObject) {
+      if (confirm('Are you sure?')) {
+          canvas.remove(activeObject);
+      }
+  }
+  else if (activeGroup) {
+      if (confirm('Are you sure?')) {
+          var objectsInGroup = activeGroup.getObjects();
+          canvas.discardActiveGroup();
+          objectsInGroup.forEach(function(object) {
+          canvas.remove(object);
+          });
+      }
+  }
+}
+
+//event listener for the deletion function
+document.getElementById("delete").onclick = deleteObjects;
 
 });
