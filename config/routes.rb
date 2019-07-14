@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get  '/profile', to: 'pages#profile'
   get  '/login',   to: 'sessions#new'
   post '/login',   to: 'sessions#create'
-  get  '/logout',  to: 'sessions#destroy'
+  delete  '/logout',  to: 'sessions#destroy'
   resources :users
   #add paths to update, delete, create, show, etc. for boards
   get  '/boards/:id',             to: 'boards#show'
