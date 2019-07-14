@@ -9,26 +9,9 @@
 
 <% if user_found == false %>
   <script type="text/javascript">
-    window.location.href="/pages/index"
+    window.location.href="/boards"
   </script>
 <% end %>
-
-<!-- <div class="row">
-  <aside class="col-md-4">
-    <section class="board_info">
-      <h1>
-        <%= @board.title %>
-        <% @board.users.each do |user| %>
-          <% id = user.id %>
-          <% @user = User.find_by_id(id) %>
-          <li>
-            <td><%= @user.name %></td>
-          </li>
-        <% end %>
-      </h1>
-    </section>
-  </aside>
-</div> -->
 
 <!DOCTYPE html>
 <html>
@@ -58,12 +41,24 @@
             <a href="#">nothing</a>
             <a href="#">the void itself</a>
             <a href="#">more nothing</a>
-    </div></li>
+        </div></li>
     <li><button class="tool" id="delete">Delete Note</button></li>
     <li><button class="tool" id="draw">Draw</button></li>
     <li><button class="tool" id="save">Save</button></li>
-    <li><button class="tool" id="people">People</button></li>
-
+    <li><div class="dropdown">
+        <button class="tool" id="pplPerm">People</button>
+        <div class="dropdown-content" id="pplDropdown">
+          <form id="pplForm">
+            User's email: <input type="text" name="userEmail">
+            <button type="button" id="emailInput">Submit</button>
+          </form>
+          <div class="text">Click to remove:</div>
+          <% if @board.users.size > 1 %>
+            <% @board.users.each do |user| %>
+              <button class="removeUser" id="user-<%= user.id %>"><%= user.name %></button>
+            <% end %>
+          <% end %>
+        </div></li>
   </ul>
 
   <form id="imgForm">

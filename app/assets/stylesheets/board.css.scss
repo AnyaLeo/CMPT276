@@ -50,7 +50,7 @@
   overflow: hidden;
 }
 
-#boardBody li div .dropdown .bgChange {
+#boardBody li div .dropdown {
   font-size: 16px;
   border: none;
   outline: none;
@@ -59,10 +59,6 @@
   background-color: inherit;
   font-family: inherit;
   margin: 0;
-}
-
-#boardBody li div .tool a:hover, .dropdown:hover .bgChange {
-  background-color: red;
 }
 
 .dropdown-content {
@@ -128,4 +124,38 @@
   width: 300px;
   height: 100px;
   padding: 0.5em;
+}
+
+//people
+.removeUser{
+  text-decoration: none;
+  font-size: 18px;
+  display: inline;
+  transition: 0.3s;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  min-width: 160px;
+  text-align: center;
+}
+
+#emailInput{
+  text-decoration: none;
+  font-size: 18px;
+  display: inline;
+  transition: 0.3s;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  min-width: 100%;
+}
+
+#pplForm{
+  display: inline-block;
+  text-align: center;
+  height: 70%;
+}
+
+.text{
+  text-align: center;
 }
