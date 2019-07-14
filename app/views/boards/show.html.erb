@@ -45,20 +45,7 @@
     <li><button class="tool" id="delete">Delete Note</button></li>
     <li><button class="tool" id="draw">Draw</button></li>
     <li><button class="tool" id="save">Save</button></li>
-    <li><div class="dropdown">
-        <button class="tool" id="pplPerm">People</button>
-        <div class="dropdown-content" id="pplDropdown">
-          <form id="pplForm">
-            User's email: <input type="text" name="userEmail">
-            <button type="button" id="emailInput">Submit</button>
-          </form>
-          <div class="text">Click to remove:</div>
-          <% if @board.users.size > 1 %>
-            <% @board.users.each do |user| %>
-              <button class="removeUser" id="user-<%= user.id %>"><%= user.name %></button>
-            <% end %>
-          <% end %>
-        </div></li>
+    <li><button class="tool" id="ppl">People</button></li>
   </ul>
 
   <form id="imgForm">

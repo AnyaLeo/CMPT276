@@ -1,6 +1,22 @@
-<h1>Editing Board</h1>
+<h1>Edit Board</h1>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<%= javascript_include_tag "edit" %>
 
 <%= render 'form', board: @board %>
 
-<%= link_to 'Show', @board %> |
-<%= link_to 'Back', boards_path %>
+<div class="boardId" data-id="<%= @board[:id] %>"></div>
+<form id="pplForm">
+  <strong>User's email:</strong><input type="text" name="userEmail">
+  <button type="button" id="emailInput">Submit</button>
+</form>
+<br>
+
+<hi>Users:</hi>
+<% @board.users.each do |user| %>
+  <li><td><%= user.name %> <button type="button" class="removeUser" id="user-<%= user.id %>">Remove</button></td></li><br>
+<% end %>
+
+<%= link_to 'Current Board', @board %> |
+<%= link_to 'Boards', boards_path %>
