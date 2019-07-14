@@ -63,6 +63,18 @@ class BoardsController < ApplicationController
     @board.update_attribute(:canvas_content, params[:canvas])
   end
 
+  def add_user
+    @board = Board.find(params[:board_id])
+    @user = User.find_by_email(params[:user_email])
+    @board.users << @user
+  end
+
+  def remove_user
+    @board = Board.find(params[:board_id])
+    @user = @board.users.find(params[:user_id])
+    @board.users.delete(@user)
+  end
+
   # DELETE /boards/1
   # DELETE /boards/1.json
   def destroy

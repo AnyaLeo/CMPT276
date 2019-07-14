@@ -71,7 +71,38 @@ $(document).ready(function(){
       url: "/boards/" + boardId + "/save_board",
       method: "put",
       data: { 'board_id': boardId,
-              'canvas': newCanvas},
+              'canvas': newCanvas },
+      success: function(){
+                console.log('success');
+      }
+    });
+  });
+
+  //add user - reload to see changes
+  $('#emailInput').click(function(){
+    var userEmail = $('input[name=userEmail]').val();
+    $('#pplForm').trigger("reset");
+    $.ajax({
+      url: "/boards/" + boardId + "/add_user",
+      method: "put",
+      data: { 'board_id': boardId,
+              'user_email': userEmail },
+      success: function(){
+                console.log('success');
+      }
+    });
+  });
+
+  //remove user - reload to see changes
+  $('.removeUser').click(function(e){
+    var buttonId = $(this).attr('id');
+    var userId = buttonId.replace ( /[^\d.]/g, '' );;
+    console.log(userId);
+    $.ajax({
+      url: "/boards/" + boardId + "/remove_user",
+      method: "put",
+      data: { 'board_id': boardId,
+              'user_id': userId },
       success: function(){
                 console.log('success');
       }
