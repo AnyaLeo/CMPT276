@@ -8,7 +8,8 @@
     <% @user.boards.each do |board| %>
       <li>
       <td><%= board.title %></td>
-      <td><%= link_to 'Show Board', board %></td>
+      <td><%= link_to 'Show', board %></td>
+      <td><%= link_to 'Edit', controller: "boards", action: "edit", id: board %></td>
       <td><%= link_to 'Destroy', board, method: :delete %></td>
       </li>
     <% end %>

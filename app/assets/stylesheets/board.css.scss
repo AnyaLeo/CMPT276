@@ -50,7 +50,7 @@
   overflow: hidden;
 }
 
-#boardBody li div .dropdown .bgChange {
+#boardBody li div .dropdown {
   font-size: 16px;
   border: none;
   outline: none;
@@ -59,10 +59,6 @@
   background-color: inherit;
   font-family: inherit;
   margin: 0;
-}
-
-#boardBody li div .tool a:hover, .dropdown:hover .bgChange {
-  background-color: red;
 }
 
 .dropdown-content {

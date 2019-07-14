@@ -73,7 +73,7 @@ $(document).ready(function(){
       url: "/boards/" + boardId + "/save_board",
       method: "put",
       data: { 'board_id': boardId,
-              'canvas': newCanvas},
+              'canvas': newCanvas },
       success: function(){
                 console.log('success');
       }

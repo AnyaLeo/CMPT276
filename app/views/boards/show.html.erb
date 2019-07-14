@@ -9,26 +9,9 @@
 
 <% if user_found == false %>
   <script type="text/javascript">
-    window.location.href="/pages/index"
+    window.location.href="/boards"
   </script>
 <% end %>
-
-<!-- <div class="row">
-  <aside class="col-md-4">
-    <section class="board_info">
-      <h1>
-        <%= @board.title %>
-        <% @board.users.each do |user| %>
-          <% id = user.id %>
-          <% @user = User.find_by_id(id) %>
-          <li>
-            <td><%= @user.name %></td>
-          </li>
-        <% end %>
-      </h1>
-    </section>
-  </aside>
-</div> -->
 
 <!DOCTYPE html>
 <html>
@@ -67,14 +50,13 @@
     <li><div class="dropdown">
     <button id ="bgcolor-button" class = "jscolor-active tool"> Background </button>
       <div class="dropdown-content" id="bgDropdown">
-        <input id="bgcolor-input" class="jscolor {onFineChange:'setBackgroundColor(this)'}" value="ab2567">
+        <input id="bgcolor-input" class="jscolor {onFineChange:'setBackgroundColor(this)'}" value="ffffff">
       </div>
     </li> 
     <li><button class="tool" id="delete">Delete Note</button></li>
     <li><button class="tool" id="draw">Draw</button></li>
     <li><button class="tool" id="save">Save</button></li>
-    <li><button class="tool" id="people">People</button></li>
-
+    <li><button class="tool" id="ppl">People</button></li>
   </ul>
 
   <form id="imgForm">
