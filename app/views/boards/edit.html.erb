@@ -13,9 +13,11 @@
 </form>
 <br>
 
-<hi>Users:</hi>
-<% @board.users.each do |user| %>
-  <li><td><%= user.name %> <button type="button" class="removeUser" id="user-<%= user.id %>">Remove</button></td></li><br>
+<% if @board.users.size > 1 %>
+  <hi>Users:</hi><br>
+  <% @board.users.each do |user| %>
+    <li><td><%= user.name %> <button type="button" class="removeUser" id="user-<%= user.id %>">Remove</button></td></li><br>
+  <% end %>
 <% end %>
 
 <%= link_to 'Current Board', @board %> |

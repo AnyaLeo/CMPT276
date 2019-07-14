@@ -15,6 +15,7 @@ $(document).ready(function(){
                 console.log('success');
       }
     });
+    location.reload();
   });
 
   //remove user
@@ -32,5 +33,6 @@ $(document).ready(function(){
                 console.log('success');
       }
     });
+    location.reload();
   });
 });

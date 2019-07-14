@@ -1,4 +1,3 @@
-var canvas;
 $(document).ready(function(){
   canvas = new fabric.Canvas('drawingCanvas');
   canvas.isDrawingMode = false;
@@ -15,47 +14,54 @@ $(document).ready(function(){
   var boardId = $(".boardId").attr("data-id");
   console.log(boardId)
 
-  var deleteStatus = false;
-
   //add new text note on click
   $('#add').click(function(){
     canvas.isDrawingMode = false;
-    deleteStatus = false;
     var textNote = new fabric.IText('New Note', {
       left: 0,
       top: 0,
     });
     canvas.add(textNote);
-
   });
 
   $('#addImage').click(function(){
     canvas.isDrawingMode = false;
-    deleteStatus = false;
     $('#imgForm').toggle();
   });
 
-  //on submitting img link
-  $('#imgLinkInput').click(function(){
-    var imgSrc = $('input[name=imgLink]').val();
-    $('#imgForm').trigger("reset");
-    fabric.Image.fromURL(imgSrc, function(newImg) {
-      var img = newImg.set({ left: 0, top: 0 });
-      canvas.add(img);
-    });
+  //on uploading file
+  $('#file-input').change(function(e) {
+    var file = e.target.files[0];
+    var reader = new FileReader();
+    reader.onload = function(f) {
+        var data = f.target.result;
+        fabric.Image.fromURL(data, function(img) {
+            var oImg = img.set({ left: 0, top: 0 });
+            canvas.add(oImg).renderAll();
+            canvas.setActiveObject(oImg);
+        });
+    };
+    reader.readAsDataURL(file);
   });
 
-  //allow user to delete notes
+  //delete selected objects
   $('#delete').click(function(){
     canvas.isDrawingMode = false;
-    deleteStatus = true;
-    });
-
-
-    
-    $('#notesContainer').click(function(e){
-      if (deleteStatus) {
-        $(e.target).remove();
+    var activeObject = canvas.getActiveObject(),
+    activeGroup = canvas.getActiveGroup();
+    if (activeObject) {
+        if (confirm('Are you sure?')) {
+            canvas.remove(activeObject);
+        }
+    }
+    else if (activeGroup) {
+        if (confirm('Are you sure?')) {
+            var objectsInGroup = activeGroup.getObjects();
+            canvas.discardActiveGroup();
+            objectsInGroup.forEach(function(object) {
+            canvas.remove(object);
+            });
+        }
     }
   });
 
@@ -78,32 +84,10 @@ $(document).ready(function(){
       data: { 'board_id': boardId,
               'canvas': newCanvas },
       success: function(){
+                alert("Board saved successfully!")
                 console.log('success');
       }
     });
   });
-
-  //delete the selected objects
-  function deleteObjects(){
-	var activeObject = canvas.getActiveObject(),
-  activeGroup = canvas.getActiveGroup();
-  if (activeObject) {
-      if (confirm('Are you sure?')) {
-          canvas.remove(activeObject);
-      }
-  }
-  else if (activeGroup) {
-      if (confirm('Are you sure?')) {
-          var objectsInGroup = activeGroup.getObjects();
-          canvas.discardActiveGroup();
-          objectsInGroup.forEach(function(object) {
-          canvas.remove(object);
-          });
-      }
-  }
-}
-
-//event listener for the deletion function
-document.getElementById("delete").onclick = deleteObjects;
 
 });

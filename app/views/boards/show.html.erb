@@ -28,13 +28,13 @@
   <script>
     // please keep it here it doesn't work from the board js somehow -a
   function setBackgroundColor(picker) {
-    
+
     var newColor = '#' + picker.toString();
     canvas.backgroundColor = newColor;
     canvas.renderAll();
     console.log("the color is" + newColor);
   }
-    
+
   </script>
 
 </head>
@@ -53,7 +53,7 @@
       <div class="dropdown-content" id="bgDropdown">
         <input id="bgcolor-input" class="jscolor {onFineChange:'setBackgroundColor(this)'}" value="ffffff">
       </div>
-    </li> 
+    </li>
     <li><button class="tool" id="delete">Delete</button></li>
     <li><button class="tool" id="draw">Draw</button></li>
     <li><button class="tool" id="save">Save</button></li>
@@ -61,8 +61,8 @@
   </ul>
 
   <form id="imgForm">
-    Image Link: <input type="text" name="imgLink">
-    <button type="button" id="imgLinkInput">Submit</button>
+    Image: <input type="file" id="file-input">
+    <!--<buttontype="button" id="imgLinkInput">Submit</button>-->
   </form>
 
   <div id="notesContainer"></div>
