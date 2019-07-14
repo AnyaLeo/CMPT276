@@ -33,6 +33,7 @@ $(document).ready(function(){
     canvas.isDrawingMode = false;
     deleteStatus = false;
     $('#imgForm').toggle();
+    console.log("added the image");
   });
 
   //on submitting img link
@@ -43,6 +44,7 @@ $(document).ready(function(){
       var img = newImg.set({ left: 0, top: 0 });
       canvas.add(img);
     });
+    console.log("inputted the link for the image");
   });
 
   //allow user to delete notes
@@ -88,12 +90,12 @@ $(document).ready(function(){
 	var activeObject = canvas.getActiveObject(),
   activeGroup = canvas.getActiveGroup();
   if (activeObject) {
-      if (confirm('Are you sure?')) {
+      if (confirm('Are you sure you want to delete the object?')) {
           canvas.remove(activeObject);
       }
   }
   else if (activeGroup) {
-      if (confirm('Are you sure?')) {
+      if (confirm('Are you sure you want to delete the object?')) {
           var objectsInGroup = activeGroup.getObjects();
           canvas.discardActiveGroup();
           objectsInGroup.forEach(function(object) {
