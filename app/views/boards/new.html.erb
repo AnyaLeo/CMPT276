@@ -1,0 +1,50 @@
+
+
+<!-- <=% render 'form', board: @board %>
+
+<%= link_to 'Back', boards_path %> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script type='text/javascript' src='http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.0/fabric.min.js'></script>
+
+  <link rel="stylesheet" href="board.css">
+  <%= javascript_include_tag "board" %>
+  <%= javascript_include_tag "jscolor" %>
+
+</head>
+<body id="boardBody">
+
+  <ul>
+    <li><%= link_to '<button class="tool"">Back</button>'.html_safe, "../pages/index" %></li>
+    <p id="boardName"><b>New Board</b></p>
+    <li><button class="tool" id="add">Add Text</button></li>
+    <li><button class="tool" id="addImage">Add Image</button></li>
+
+     <li><div class="dropdown">
+        <button id ="bgcolor-button" class = "jscolor-active tool"> Background </button>
+        <div class="dropdown-content" id="bgDropdown">
+            <input id="bgcolor-input" class="jscolor {onFineChange:'update(this)'}" value="ab2567">
+        </div>
+      </li> 
+
+    <li><button class="tool" id="delete">Delete Note</button></li>
+    <li><button class="tool" id="draw">Draw</button></li>
+
+  </ul>
+
+  <form id="imgForm">
+    Image Link: <input type="text" name="imgLink">
+    <button type="button" id="imgLinkInput">Submit</button>
+  </form>
+
+  <div id="notesContainer"></div>
+  <canvas id="drawingCanvas"></canvas>
+
+</body>
+</html>

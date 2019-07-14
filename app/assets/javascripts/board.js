@@ -1,5 +1,7 @@
+var canvas;
+
 $(document).ready(function(){
-  var canvas = new fabric.Canvas('drawingCanvas');
+  canvas = new fabric.Canvas('drawingCanvas');
   canvas.isDrawingMode = false;
   canvas.freeDrawingBrush.width = 5;
   canvas.freeDrawingBrush.color = "black";

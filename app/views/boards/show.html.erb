@@ -40,6 +40,18 @@
   <script type='text/javascript' src='http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.0/fabric.min.js'></script>
 
   <%= javascript_include_tag "board" %>
+  <%= javascript_include_tag "jscolor" %>
+
+  <script>
+    // please keep it here it doesn't work from the board js somehow -a
+  function setBackgroundColor(picker) {
+    
+    var newColor = '#' + picker.toString();
+    canvas.backgroundColor = newColor;
+    canvas.renderAll();
+  }
+    
+  </script>
 
 </head>
 <body id="boardBody">
@@ -53,12 +65,11 @@
     <li><button class="tool" id="add">Add Text</button></li>
     <li><button class="tool" id="addImage">Add Image</button></li>
     <li><div class="dropdown">
-        <button class="tool" id="bgChange">Background</button>
-        <div class="dropdown-content" id="bgDropdown">
-            <a href="#">nothing</a>
-            <a href="#">the void itself</a>
-            <a href="#">more nothing</a>
-    </div></li>
+    <button id ="bgcolor-button" class = "jscolor-active tool"> Background </button>
+      <div class="dropdown-content" id="bgDropdown">
+        <input id="bgcolor-input" class="jscolor {onFineChange:'setBackgroundColor(this)'}" value="ab2567">
+      </div>
+    </li> 
     <li><button class="tool" id="delete">Delete Note</button></li>
     <li><button class="tool" id="draw">Draw</button></li>
     <li><button class="tool" id="save">Save</button></li>
