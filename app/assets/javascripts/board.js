@@ -27,6 +27,7 @@ $(document).ready(function(){
   $('#addImage').click(function(){
     canvas.isDrawingMode = false;
     $('#imgForm').toggle();
+    console.log("added the image");
   });
 
   //on uploading file
