@@ -1,7 +1,5 @@
-var canvas;
-
 $(document).ready(function(){
-  canvas = new fabric.Canvas('drawingCanvas');
+  var canvas = new fabric.Canvas('drawingCanvas');
   canvas.isDrawingMode = false;
   canvas.freeDrawingBrush.width = 5;
   canvas.freeDrawingBrush.color = "black";
@@ -20,6 +18,7 @@ $(document).ready(function(){
 
   //add new text note on click
   $('#add').click(function(){
+    canvas.isDrawingMode = false;
     deleteStatus = false;
     var textNote = new fabric.IText('New Note', {
       left: 0,
@@ -30,13 +29,13 @@ $(document).ready(function(){
   });
 
   $('#addImage').click(function(){
+    canvas.isDrawingMode = false;
     deleteStatus = false;
     $('#imgForm').toggle();
   });
 
   //on submitting img link
   $('#imgLinkInput').click(function(){
-    deleteStatus = false;
     var imgSrc = $('input[name=imgLink]').val();
     $('#imgForm').trigger("reset");
     fabric.Image.fromURL(imgSrc, function(newImg) {
@@ -47,6 +46,7 @@ $(document).ready(function(){
 
   //allow user to delete notes
   $('#delete').click(function(){
+    canvas.isDrawingMode = false;
     deleteStatus = true;
     });
 
