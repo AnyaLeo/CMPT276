@@ -19,6 +19,7 @@
   <meta charset="utf-8">
   <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+  <link rel="stylesheer" href ="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.2/rangeslider.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script type='text/javascript' src='http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.0/fabric.min.js'></script>
 
@@ -26,13 +27,21 @@
   <%= javascript_include_tag "jscolor" %>
 
   <script>
-    // please keep it here it doesn't work from the board js somehow -a
-  function setBackgroundColor(picker) {
+    // will move later, for now it's connected to the bgcolor-input
 
+  function setBackgroundColor(picker) {
     var newColor = '#' + picker.toString();
     canvas.backgroundColor = newColor;
     canvas.renderAll();
   }
+
+  function setBrushColor(picker) {
+    var newColor = '#' + picker.toString();
+    canvas.freeDrawingBrush.color = newColor;
+    canvas.renderAll;
+  }
+
+  
 
   </script>
 
@@ -48,13 +57,25 @@
     <li><button class="tool" id="add">Add Text</button></li>
     <li><button class="tool" id="addImage">Add Image</button></li>
     <li><div class="dropdown">
-    <button id ="bgcolor-button" class = "jscolor-active tool"> Background </button>
-      <div class="dropdown-content" id="bgDropdown">
-        <input id="bgcolor-input" class="jscolor {onFineChange:'setBackgroundColor(this)'}" value="ffffff">
-      </div>
-    </li>
+      <button id ="bgcolor-button" class = "jscolor-active tool dropdown-btn"> Background </button>
+        <div class="dropdown-content" id="bg-dropdown">
+          <input id="bgcolor-input" 
+                 class="jscolor {onFineChange:'setBackgroundColor(this)'}" 
+                 value="ffffff">
+        </div>
+    </div></li>
     <li><button class="tool" id="delete">Delete</button></li>
-    <li><button class="tool" id="draw">Draw</button></li>
+    <li><div class="dropdown">
+      <button class="tool dropdown-btn" id="draw">Draw</button>
+        <div class="dropdown-content" id="draw-dropdown">
+          
+          <input class="jscolor {onFineChange:'setBrushColor(this)'}" 
+                id = "drawcolor-button"
+                value="000000">
+          <div id="line-width"></slider>
+        
+        </div>
+    </div> </li>
     <li><button class="tool" id="save">Save</button></li>
     <li><button class="tool" id="ppl">People</button></li>
   </ul>

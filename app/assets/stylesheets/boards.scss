@@ -50,7 +50,7 @@
   overflow: hidden;
 }
 
-#boardBody li div .dropdown .bgChange {
+#boardBody li div .dropdown {
   font-size: 16px;
   border: none;
   outline: none;
@@ -61,9 +61,23 @@
   margin: 0;
 }
 
-#boardBody li div .tool a:hover, .dropdown:hover .bgChange {
+#boardBody li div .dropdown .dropdown-btn {
+
+  cursor: pointer;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+#boardBody .navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
   background-color: red;
 }
+
 .dropdown-content {
   display: none;
   position: absolute;
@@ -87,7 +101,7 @@
   background-color: #ddd;
 }
 
-.dropdown:hover .dropdown-content {
+.show {
   display: block;
 }
 //end navbar

@@ -4,6 +4,7 @@ $(document).ready(function(){
   canvas.freeDrawingBrush.width = 5;
   canvas.freeDrawingBrush.color = "black";
 
+
   var onLoadContent = $(".content").attr("data-id");
   console.log(onLoadContent);
   canvas.loadFromJSON(onLoadContent, function() {
@@ -29,6 +30,17 @@ $(document).ready(function(){
     $('#imgForm').toggle();
     console.log("added the image");
   });
+
+  //a background change in jquery thats not working, fix later
+  /*$('#bgcolor-input').click(function() {
+    console.log("we're in");
+    var newColor = '#' + this.toString();
+    console.log(newColor);
+    canvas.backgroundColor = newColor;
+    canvas.renderAll();
+    
+  });*/
+
 
   //on uploading file
   $('#file-input').change(function(e) {
@@ -90,5 +102,33 @@ $(document).ready(function(){
       }
     });
   });
+
+  //toggle show/hide dropdown content for all the dropdown btns separately
+  //there is probably a better way to do this, feel free to replace this
+  $("#bgcolor-button").click(function(){
+    $("#bg-dropdown").toggle();
+  });
+
+  $("#draw").click(function(){
+    $("#draw-dropdown").toggle();
+  });
+
+  //range slider
+  $( "#line-width" ).slider({
+    //values: [ 1, 50 ]
+    min: 1,
+    max: 50
+  });
+
+  //set the line width
+ // var selection = $( ".selector" ).slider( "value" );
+
+  $('#line-width').mouseleave(function(){
+    var newWidth = $( "#line-width" ).slider( "value" );
+    canvas.freeDrawingBrush.width = newWidth;
+    console.log("line width changed");
+  });
+
+
 
 });
