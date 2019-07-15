@@ -103,25 +103,12 @@ $(document).ready(function(){
     });
   });
 
-  //toggle show/hide dropdown content for all the dropdown btns separately
-  //there is probably a better way to do this, feel free to replace this
-  $("#bgcolor-button").click(function(){
-    $("#bg-dropdown").toggle();
-  });
-
-  $("#draw").click(function(){
-    $("#draw-dropdown").toggle();
-  });
-
   //range slider
   $( "#line-width" ).slider({
     //values: [ 1, 50 ]
     min: 1,
     max: 50
   });
-
-  //set the line width
- // var selection = $( ".selector" ).slider( "value" );
 
   $('#line-width').mouseleave(function(){
     var newWidth = $( "#line-width" ).slider( "value" );
