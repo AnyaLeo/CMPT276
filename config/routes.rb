@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => '/cable'
+
   get  'sessions/new'
   root 'pages#home'
   get  '/help',    to: 'pages#help'
@@ -20,4 +22,7 @@ Rails.application.routes.draw do
   delete  '/boards/:id',          to: 'boards#destroy'
   resources :boards
   resources :pages
+
+  get '/', to: 'boards#index'
+  post '/updateline', to: 'boards#show'
 end

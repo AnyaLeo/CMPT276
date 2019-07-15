@@ -1,3 +1,17 @@
+//= require cable
+//= require_self
+//= require_tree .
+
+this.App = {};
+
+App.cable = ActionCable.createConsumer();
+
+App.messages = App.cable.subscriptions.create('LineChannel', {
+  received: function(data) {
+    //
+  }
+});
+
 $(document).ready(function(){
   canvas = new fabric.Canvas('drawingCanvas');
   canvas.isDrawingMode = false;
@@ -119,3 +133,5 @@ $(document).ready(function(){
 
 
 });
+
+
