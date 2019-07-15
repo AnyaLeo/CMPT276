@@ -14,7 +14,7 @@ class BoardsController < ApplicationController
     # GET /boards/1
     # GET /boards/1.json
     def show
-      ActionCable.server.broadcast ‘boards’
+      ActionCable.server.broadcast ‘lines’
       head :ok
     end
   
