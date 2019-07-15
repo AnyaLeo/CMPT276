@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  mount ActionCable.server => '/cable'
+  #mount ActionCable.server => '/cable'
 
   get  'sessions/new'
   root 'pages#home'
+  get  '/chat',    to: 'rooms#show'
   get  '/help',    to: 'pages#help'
   get  '/about',   to: 'pages#about'
   get  '/contact', to: 'pages#contact'
@@ -23,6 +24,6 @@ Rails.application.routes.draw do
   resources :boards
   resources :pages
 
-  get '/', to: 'boards#index'
-  post '/updateline', to: 'boards#show'
+  #get '/', to: 'boards#index'
+  #post '/updateline', to: 'boards#show'
 end
