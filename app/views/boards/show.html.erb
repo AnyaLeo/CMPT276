@@ -1,9 +1,90 @@
-<p id="notice"><%= notice %></p>
+<!-- I'm sure there's a better way to check if a user has access to a board -->
+<!-- Feel free to change it, I just needed it to work-->
+<% user_found = false %>
+<% @board.users.each do |user| %>
+  <% if session["user_id"] == user.id %>
+    <% user_found = true %>
+  <% end %>
+<% end %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @board.title %>
-</p>
+<% if user_found == false %>
+  <script type="text/javascript">
+    window.location.href="/boards"
+  </script>
+<% end %>
 
-<%= link_to 'Edit', edit_board_path(@board) %> |
-<%= link_to 'Back', boards_path %>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+  <link rel="stylesheer" href ="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.2/rangeslider.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script type='text/javascript' src='http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.0/fabric.min.js'></script>
+
+  <%= javascript_include_tag "board" %>
+  <%= javascript_include_tag "jscolor" %>
+
+  <script>
+    // will move later, for now it's connected to the bgcolor-input
+
+  function setBackgroundColor(picker) {
+    var newColor = '#' + picker.toString();
+    canvas.backgroundColor = newColor;
+    canvas.renderAll();
+  }
+
+  function setBrushColor(picker) {
+    var newColor = '#' + picker.toString();
+    canvas.freeDrawingBrush.color = newColor;
+    canvas.renderAll;
+  }
+  
+  </script>
+
+</head>
+<body id="boardBody">
+
+  <ul>
+    <div class="content" data-id="<%= @board.canvas_content %>"></div>
+    <div class="boardId" data-id="<%= @board[:id] %>"></div>
+
+    <li><%= link_to '<button class="tool"">Back</button>'.html_safe, "../boards" %></li>
+    <p id="boardName"><b> <%= @board.title %> </b></p>
+    <li><button class="tool" id="add">Add Text</button></li>
+    <li><button class="tool" id="addImage">Add Image</button></li>
+    <li><div class="dropdown">
+      <button id ="bgcolor-button" class = "jscolor-active tool dropdown-btn"> Background </button>
+        <div class="dropdown-content" id="bg-dropdown">
+          <input id="bgcolor-input" 
+                 class="jscolor {onFineChange:'setBackgroundColor(this)'}" 
+                 value="ffffff">
+        </div>
+    </div></li>
+    <li><button class="tool" id="delete">Delete</button></li>
+    <li><div class="dropdown">
+      <button class="tool dropdown-btn" id="draw">Draw</button>
+        <div class="dropdown-content" id="draw-dropdown">
+          
+          <input class="jscolor {onFineChange:'setBrushColor(this)'}" 
+                id = "drawcolor-button"
+                value="000000">
+          <div id="line-width"></slider>
+        
+        </div>
+    </div> </li>
+    <li><button class="tool" id="save">Save</button></li>
+    <li><button class="tool" id="ppl">People</button></li>
+  </ul>
+
+  <form id="imgForm">
+    Image: <input type="file" id="file-input">
+    <!--<buttontype="button" id="imgLinkInput">Submit</button>-->
+  </form>
+
+  <div id="notesContainer"></div>
+  <canvas id="drawingCanvas"></canvas>
+
+</body>
+</html>

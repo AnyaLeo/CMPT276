@@ -15,6 +15,7 @@
 
   <link rel="stylesheet" href="board.css">
   <%= javascript_include_tag "board" %>
+  <%= javascript_include_tag "jscolor" %>
 
 </head>
 <body id="boardBody">
@@ -24,13 +25,14 @@
     <p id="boardName"><b>New Board</b></p>
     <li><button class="tool" id="add">Add Text</button></li>
     <li><button class="tool" id="addImage">Add Image</button></li>
-    <li><div class="dropdown">
-        <button class="tool" id="bgChange">Background</button>
+
+     <li><div class="dropdown">
+        <button id ="bgcolor-button" class = "jscolor-active tool"> Background </button>
         <div class="dropdown-content" id="bgDropdown">
-            <a href="#">nothing</a>
-            <a href="#">the void itself</a>
-            <a href="#">more nothing</a>
-    </div></li>
+            <input id="bgcolor-input" class="jscolor {onFineChange:'update(this)'}" value="ab2567">
+        </div>
+      </li> 
+
     <li><button class="tool" id="delete">Delete Note</button></li>
     <li><button class="tool" id="draw">Draw</button></li>
 
