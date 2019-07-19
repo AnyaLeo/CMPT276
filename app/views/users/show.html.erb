@@ -5,11 +5,12 @@
       <h1>
         <%= gravatar_for @user %>
         <%= @user.name %>
+        <br><br><br><br><br>
         <% @user.boards.each do |board| %>
           <% id = board.id %>
           <% @board = Board.find_by_id(id) %>
           <li>
-            <td><%= @board.id %></td>
+            <td><%= @board.title %></td>
           </li>
         <% end %>
       </h1>
