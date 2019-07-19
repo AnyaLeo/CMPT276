@@ -15,6 +15,6 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require jquery-ui
 //= require bootstrap
 //= require_tree ./channels
-//= require_tree .
