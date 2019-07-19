@@ -1,6 +1,7 @@
 //= require cable
 //= require_self
 //= require_tree .
+var canvas;
 
 $(document).ready(function(){
   canvas = new fabric.Canvas('drawingCanvas');
@@ -142,7 +143,6 @@ $(document).ready(function(){
 
   //range slider
   $("#line-width").slider({
-    //values: [ 1, 50 ]
     min: 1,
     max: 50
   });
@@ -152,5 +152,6 @@ $(document).ready(function(){
     canvas.freeDrawingBrush.width = newWidth;
     console.log("line width changed");
   });
+
 
 });
