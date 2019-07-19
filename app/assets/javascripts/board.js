@@ -2,13 +2,11 @@
 //= require_self
 //= require_tree .
 
-
 $(document).ready(function(){
   canvas = new fabric.Canvas('drawingCanvas');
   canvas.isDrawingMode = false;
   canvas.freeDrawingBrush.width = 5;
   canvas.freeDrawingBrush.color = "black";
-
 
   var onLoadContent = $(".content").attr("data-id");
   console.log(onLoadContent);
@@ -19,21 +17,72 @@ $(document).ready(function(){
   canvas.setWidth(2500);
   var boardId = $(".boardId").attr("data-id");
   console.log(boardId)
+  var timeSinceLastSend = $.now();
+
+  canvas.on("mouse:up", function(){
+    console.log("mouseup");
+    var activeObject = canvas.getActiveObject(),
+    activeGroup = canvas.getActiveGroup();
+    if (!activeObject && !activeGroup) {
+      var new_canvas = JSON.stringify(canvas);
+      console.log("pass");
+      code = "0";
+      $.ajax({
+        method: "put",
+        url: "/boards/" + boardId + "/update_board",
+        data: { 'object': new_canvas,
+                'update_code': code,
+                'board_id': boardId }
+      });
+      $.ajax({
+        url: "/boards/" + boardId + "/save_board",
+        method: "put",
+        data: { 'board_id': boardId,
+                'canvas': new_canvas },
+      });
+    }
+  });
+
+  //REPEAT CODE BUT I DON'T CAREEEE
+  function update_board(){
+    console.log("mouseup");
+    var activeObject = canvas.getActiveObject(),
+    activeGroup = canvas.getActiveGroup();
+    if (!activeObject && !activeGroup) {
+      var new_canvas = JSON.stringify(canvas);
+      console.log("pass");
+      code = "0";
+      $.ajax({
+        method: "put",
+        url: "/boards/" + boardId + "/update_board",
+        data: { 'object': new_canvas,
+                'update_code': code,
+                'board_id': boardId }
+      });
+      $.ajax({
+        url: "/boards/" + boardId + "/save_board",
+        method: "put",
+        data: { 'board_id': boardId,
+                'canvas': new_canvas },
+      });
+    }
+  }
 
   //add new text note on click
   $('#add').click(function(){
     canvas.isDrawingMode = false;
+    // clearInterval(interval);
     var textNote = new fabric.IText('New Note', {
       left: 0,
       top: 0,
     });
     canvas.add(textNote);
+    update_board();
   });
 
   $('#addImage').click(function(){
     canvas.isDrawingMode = false;
     $('#imgForm').toggle();
-    console.log("added the image");
   });
 
   //a background change in jquery thats not working, fix later
@@ -43,7 +92,7 @@ $(document).ready(function(){
     console.log(newColor);
     canvas.backgroundColor = newColor;
     canvas.renderAll();
-    
+    canvasModifiedCallback;
   });*/
 
 
@@ -60,6 +109,7 @@ $(document).ready(function(){
         });
     };
     reader.readAsDataURL(file);
+    update_board();
   });
 
   //delete selected objects
@@ -68,19 +118,20 @@ $(document).ready(function(){
     var activeObject = canvas.getActiveObject(),
     activeGroup = canvas.getActiveGroup();
     if (activeObject) {
-        if (confirm('Are you sure?')) {
-            canvas.remove(activeObject);
-        }
+      if (confirm('Are you sure?')) {
+        canvas.remove(activeObject);
+      }
     }
     else if (activeGroup) {
-        if (confirm('Are you sure?')) {
-            var objectsInGroup = activeGroup.getObjects();
-            canvas.discardActiveGroup();
-            objectsInGroup.forEach(function(object) {
-            canvas.remove(object);
-            });
+      if (confirm('Are you sure?')) {
+        var objectsInGroup = activeGroup.getObjects();
+        canvas.discardActiveGroup();
+        objectsInGroup.forEach(function(object) {
+          canvas.remove(object);
+        });
         }
     }
+    update_board();
   });
 
   //drawing
@@ -93,36 +144,17 @@ $(document).ready(function(){
     }
   });
 
-  //save canvas
-  $('#save').click(function(){
-    var newCanvas = JSON.stringify(canvas);
-    $.ajax({
-      url: "/boards/" + boardId + "/save_board",
-      method: "put",
-      data: { 'board_id': boardId,
-              'canvas': newCanvas },
-      success: function(){
-                alert("Board saved successfully!")
-                console.log('success');
-      }
-    });
-  });
-
   //range slider
-  $( "#line-width" ).slider({
+  $("#line-width").slider({
     //values: [ 1, 50 ]
     min: 1,
     max: 50
   });
 
   $('#line-width').mouseleave(function(){
-    var newWidth = $( "#line-width" ).slider( "value" );
+    var newWidth = $("#line-width").slider("value");
     canvas.freeDrawingBrush.width = newWidth;
     console.log("line width changed");
   });
 
-
-
 });
-
-

@@ -1,38 +1,42 @@
 class BoardsController < ApplicationController
     protect_from_forgery with: :null_session
     before_action :set_board, only: [:show, :edit, :update, :destroy]
-  
+
     layout false, only: [:show]
     layout "board", only: [:show]
-  
+
     # GET /boards
     # GET /boards.json
     def index
       @boards = Board.all
     end
-  
+
     # GET /boards/1
     # GET /boards/1.json
     def show
       #ActionCable.server.broadcast ‘lines’
       #head :ok
+      ActionCable.server.broadcast 'board_channel',
+        object: params[:object],
+        update_code: params[:update_code],
+        board_id: params[:board_id]
     end
-  
+
     # GET /boards/new
     def new
       @board = Board.new
     end
-  
+
     # GET /boards/1/edit
     def edit
     end
-  
+
     # POST /boards
     # POST /boards.json
     def create
       @board = Board.new(board_params)
       @user = User.find(session["user_id"])
-  
+
       respond_to do |format|
         if @board.save
           @board.update_attribute(:canvas_content, "{\"objects\":[],\"background\":\"\"}")
@@ -45,7 +49,7 @@ class BoardsController < ApplicationController
         end
       end
     end
-  
+
     # PATCH/PUT /boards/1
     # PATCH/PUT /boards/1.json
     def update
@@ -59,24 +63,24 @@ class BoardsController < ApplicationController
         end
       end
     end
-  
+
     def save_board
       @board = Board.find(params[:board_id])
       @board.update_attribute(:canvas_content, params[:canvas])
     end
-  
+
     def add_user
       @board = Board.find(params[:board_id])
       @user = User.find_by_email(params[:user_email])
       @board.users << @user
     end
-  
+
     def remove_user
       @board = Board.find(params[:board_id])
       @user = @board.users.find(params[:user_id])
       @board.users.delete(@user)
     end
-  
+
     # DELETE /boards/1
     # DELETE /boards/1.json
     def destroy
@@ -87,16 +91,15 @@ class BoardsController < ApplicationController
         format.json { head :no_content }
       end
     end
-  
+
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_board
         @board = Board.find(params[:id])
       end
-  
+
       # Never trust parameters from the scary internet, only allow the white list through.
       def board_params
         params.require(:board).permit(:title, :canvas_content)
       end
   end
-  

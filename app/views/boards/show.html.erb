@@ -40,7 +40,7 @@
     canvas.freeDrawingBrush.color = newColor;
     canvas.renderAll;
   }
-  
+
   </script>
 
 </head>
@@ -57,8 +57,8 @@
     <li><div class="dropdown">
       <button id ="bgcolor-button" class = "jscolor-active tool dropdown-btn"> Background </button>
         <div class="dropdown-content" id="bg-dropdown">
-          <input id="bgcolor-input" 
-                 class="jscolor {onFineChange:'setBackgroundColor(this)'}" 
+          <input id="bgcolor-input"
+                 class="jscolor {onFineChange:'setBackgroundColor(this)'}"
                  value="ffffff">
         </div>
     </div></li>
@@ -66,24 +66,20 @@
     <li><div class="dropdown">
       <button class="tool dropdown-btn" id="draw">Draw</button>
         <div class="dropdown-content" id="draw-dropdown">
-          
-          <input class="jscolor {onFineChange:'setBrushColor(this)'}" 
+
+          <input class="jscolor {onFineChange:'setBrushColor(this)'}"
                 id = "drawcolor-button"
                 value="000000">
           <div id="line-width"></slider>
-        
+
         </div>
     </div> </li>
-    <li><button class="tool" id="save">Save</button></li>
-    <li><button class="tool" id="ppl">People</button></li>
   </ul>
 
   <form id="imgForm">
     Image: <input type="file" id="file-input">
-    <!--<buttontype="button" id="imgLinkInput">Submit</button>-->
   </form>
 
-  <div id="notesContainer"></div>
   <canvas id="drawingCanvas"></canvas>
 
 </body>
