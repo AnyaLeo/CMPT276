@@ -1,14 +1,9 @@
 class BoardChannel < ApplicationCable::Channel
   def subscribed
-    stream_for "board_channel"
+    board = Board.find(params[:board_id])
+    stream_for board
   end
 
   def unsubscribed
-    # Any cleanup needed when channel is unsubscribed
   end
-
-  # def speak(data)
-  #   #Message.create! content: data['message']
-  #   ActionCable.server.broadcast 'room_channel', message: data['message']
-  # end
 end

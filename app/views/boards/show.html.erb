@@ -20,7 +20,7 @@
   <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
   <link rel="stylesheer" href ="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.2/rangeslider.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script type='text/javascript' src='http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.0/fabric.min.js'></script>
 
   <%= javascript_include_tag "board" %>
@@ -68,7 +68,7 @@
         <div class="dropdown-content" id="draw-dropdown">
 
           <input class="jscolor {onFineChange:'setBrushColor(this)'}"
-                id = "drawcolor-button"
+                id="drawcolor-button"
                 value="000000">
           <div id="line-width"></slider>
 

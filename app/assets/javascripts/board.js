@@ -26,12 +26,10 @@ $(document).ready(function(){
     if (!activeObject && !activeGroup) {
       var new_canvas = JSON.stringify(canvas);
       console.log("pass");
-      code = "0";
       $.ajax({
         method: "put",
         url: "/boards/" + boardId + "/update_board",
-        data: { 'object': new_canvas,
-                'update_code': code,
+        data: { 'canvas': new_canvas,
                 'board_id': boardId }
       });
       $.ajax({
@@ -51,12 +49,10 @@ $(document).ready(function(){
     if (!activeObject && !activeGroup) {
       var new_canvas = JSON.stringify(canvas);
       console.log("pass");
-      code = "0";
       $.ajax({
         method: "put",
         url: "/boards/" + boardId + "/update_board",
-        data: { 'object': new_canvas,
-                'update_code': code,
+        data: { 'canvas': new_canvas,
                 'board_id': boardId }
       });
       $.ajax({

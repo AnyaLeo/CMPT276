@@ -14,12 +14,9 @@ class BoardsController < ApplicationController
     # GET /boards/1
     # GET /boards/1.json
     def show
-      #ActionCable.server.broadcast ‘lines’
-      #head :ok
-      ActionCable.server.broadcast 'board_channel',
-        object: params[:object],
-        update_code: params[:update_code],
-        board_id: params[:board_id]
+      # ActionCable.server.broadcast "board_channel",
+        # canvas: params[:canvas],
+        # board_id: params[:board_id]
     end
 
     # GET /boards/new
@@ -79,6 +76,11 @@ class BoardsController < ApplicationController
       @board = Board.find(params[:board_id])
       @user = @board.users.find(params[:user_id])
       @board.users.delete(@user)
+    end
+
+    def update_board
+      @board = Board.find(params[:board_id])
+      BoardChannel.broadcast_to(@board, canvas: params[:canvas])
     end
 
     # DELETE /boards/1
