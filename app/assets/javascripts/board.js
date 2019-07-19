@@ -1,7 +1,6 @@
 //= require cable
 //= require_self
 //= require_tree .
-var canvas;
 
 $(document).ready(function(){
   canvas = new fabric.Canvas('drawingCanvas');
@@ -68,7 +67,6 @@ $(document).ready(function(){
   //add new text note on click
   $('#add').click(function(){
     canvas.isDrawingMode = false;
-    // clearInterval(interval);
     var textNote = new fabric.IText('New Note', {
       left: 0,
       top: 0,
@@ -91,7 +89,6 @@ $(document).ready(function(){
     canvas.renderAll();
     canvasModifiedCallback;
   });*/
-
 
   //on uploading file
   $('#file-input').change(function(e) {
@@ -152,6 +149,4 @@ $(document).ready(function(){
     canvas.freeDrawingBrush.width = newWidth;
     console.log("line width changed");
   });
-
-
 });
