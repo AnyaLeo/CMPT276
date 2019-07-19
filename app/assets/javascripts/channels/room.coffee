@@ -7,7 +7,8 @@ App.room = App.cable.subscriptions.create "RoomChannel",
 
     received: (data) ->
         $('#messages').append data['message']
-        alert data['message']
+        ## uncoment to test whats being sent
+        #alert data['message']
     
     speak: (message) ->
         @perform 'speak', message: message
