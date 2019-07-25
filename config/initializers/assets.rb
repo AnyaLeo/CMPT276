@@ -15,6 +15,7 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 Rails.application.config.assets.precompile += %w( custom.css )
 Rails.application.config.assets.precompile += %w( board.css )
+Rails.application.config.assets.precompile += %w( main.js )
 Rails.application.config.assets.precompile += %w( board.js )
 Rails.application.config.assets.precompile += %w( jscolor.js )
 Rails.application.config.assets.precompile += %w( edit.js )

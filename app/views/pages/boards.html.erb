@@ -4,9 +4,11 @@
  	<body>
 		<%= form_for(@board) do |f| %>
       		<%= f.label :"Name of the new board:" %>
-     		<%= f.text_field :title, class: 'form-control' %>
-     		<%= f.submit "Create New Board", class: "btn btn-primary" %>
-   	    <% end %>
+			 <%= f.text_field :title, class: 'form-control' %>
+			 <div class = "wrapper">
+     		<%= f.submit "Create New Board", id: "create-board-btn", class: "btn btn-lg btn-primary btn-custom" %>
+		   </div>
+	 <% end %>
    	</body>
    	<body>
    	<br></br>

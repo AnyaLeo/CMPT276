@@ -1,9 +1,14 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-///////////////////////////////////////////* mixins, variables, etc. *///////////////////////////////////////////////
+//////////////* mixins, variables, etc. *///////////////////////////////////////////////
 
 $gray-medium-light: #afafaf;
+$default-background: #eeeeee;
+$active-background: rgb(129, 192, 235);
+$default-color: black;
+$active-color: black;
+$accent-color: #5adada;
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -11,16 +16,12 @@ $gray-medium-light: #afafaf;
   box-sizing:         border-box;
 }
 
-ul {
-    display: inline-block;
-    padding-left: 0;
-    text-align: left;
-}
+
 
 body {
   margin: 0;
   margin-top: 50px;
-  font-family: sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   padding-top: 50px;
 }
 
@@ -39,7 +40,7 @@ textarea {
   }
 }
 
-//////////////////////////////////////////////////////////////////* typography *//////////////////////////////////////////////////
+/////////////////* typography *//////////////////////////////////////////////////
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
@@ -50,15 +51,17 @@ h1 {
   letter-spacing: -2px;
   margin-bottom: 40px;
   text-align: center;
+  //color: $accent-color;
 }
 
 h2 {
+  //color: $accent-color;
   font-size: 1.2em;
   letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: $gray-light;
+  //color: $gray-light;
 }
 
 h3 {
@@ -73,25 +76,33 @@ p {
   line-height: 1.7em;
 }
 
+a {
+  font-size: 16px;
+  line-height: 1.7em;
+}
 
-///////////////////////////////////////////////////////////////* header *////////////////////////////////////////////////////////////
+
+/////////* header *////////////////////////////////////////////////////////////
 
 #logo {
   float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: white;
+  margin-right: 20px;
+  font-size: 1.5em;
+  color: $default-color;
   text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
+  letter-spacing: -2px;
+  //padding-top: 9px;
+  padding-left: 16px;
   font-weight: bold;
+  transition: .5s;
   &:hover {
-    color: white;
+    color: $active-background;
     text-decoration: none;
   }
 }
 
-/////////////////////////////////////////////////////////////////////////////////* footer */////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////* footer */////////////////////////////////////////////////////////////////////////
 
 footer {
   margin-top: 45px;
@@ -117,7 +128,7 @@ footer {
   }
 }
 
-/////////////////////////////////////////////////////////////////////* miscellaneous *///////////////////////////////////////////////////////
+//////////////////////////* miscellaneous *///////////////////////////////////////////////////////
 
 .debug_dump {
   clear: both;
@@ -127,7 +138,7 @@ footer {
   @include box_sizing;
 }
 
-///////////////////////////////////////////////////////////////////////////////////* sidebar *///////////////////////////////////////////////
+/////////////////////////////////* sidebar *///////////////////////////////////////////////
 
 aside {
   section.user_info {
@@ -164,7 +175,7 @@ aside {
   margin-top: 15px;
 }
 
-//////////////////////////////////////////////////////* forms *////////////////////////////////////////////////////////
+//////////////////////* forms *////////////////////////////////////////////////////////
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
@@ -206,7 +217,7 @@ input {
   margin-left: 0;
 }
 
-//////////////////////////////////////////////////////////* Users index *//////////////////////////////////////////
+///////////////////////////* Users index *//////////////////////////////////////////
 
 .users {
   list-style: none;
@@ -216,4 +227,124 @@ input {
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
   }
+}
+
+
+////* Navbar */////
+.navbar-custom {
+  text-decoration: none;
+  font-size: 20px;
+  display: inline;
+  transition: 0.3s;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  border-radius: 0;
+}
+
+.navbar-custom .navbar-nav > li > a {
+  color:$default-color;
+  //font size for the links
+  font-size: 16px;
+  font-family: inherit;
+  background-color: transparent;
+}
+
+.nav .navbar-nav .navbar-right {
+  background-color: transparent;
+}
+
+a { -o-transition:.3s;
+  -ms-transition:.3s;
+  -moz-transition:.3s;
+  -webkit-transition:.3s;
+  /* ...and now for the proper property */
+  transition:.3s;}
+
+.navbar-custom .navbar-nav > li > a:hover,
+.navbar-custom .navbar-nav > li > a:focus,
+.navbar-custom .navbar-nav > .active > a:hover,
+.navbar-custom .navbar-nav > .active > a:focus,
+.navbar-custom .navbar-nav > .open >a {
+    text-decoration: none;
+    background-color: $active-background;
+}
+
+#header {
+  -o-transition:.3s;
+  -ms-transition:.3s;
+  -moz-transition:.3s;
+  -webkit-transition:.3s;
+  transition: .3s;
+}
+
+.black {
+  background-color: rgba(224, 224, 224, 0.9);
+  color: white;
+  height: 50px;
+  padding: 0px 5px;
+}
+
+
+#mainHeader {
+  //color of the header
+  background-color: transparent; 
+  //border-bottom: 1.5px solid $active-background;
+}
+
+//the display of the links. i guess?? not really l o l
+ul {
+  display: inline-block;
+  padding-left: 0;
+  text-align: left;
+  background-color: transparent;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  z-index: 999;
+  //border-bottom: 1px solid $gray-lighter;
+}
+
+///buttons
+/// class btn-custom
+
+.btn {
+  border: 0 none;
+  //font-weight: 700;
+  //letter-spacing: -1px;
+  //text-transform: uppercase;
+  transition: .3s;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+  outline: 0 none;
+}
+
+.btn-primary {
+  background: none;
+  //border: 1px solid black;
+  background-color: $active-background;
+  color: black;
+
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+  //background:  rgb(18, 60, 136);
+  background: #003688;
+  border: none;
+  color: white;
+}
+
+.btn-primary:active, .btn-primary.active {
+  background: #007299;
+  box-shadow: none;
+}
+
+#create-board-btn {
+  height:20px; 
+  position:relative; 
+  margin: -20px -50px; 
+  width:200px; 
+  top:50%; 
+  left:45%;
 }
