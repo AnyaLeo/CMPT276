@@ -254,7 +254,8 @@ input {
   background-color: transparent;
 }
 
-a { -o-transition:.3s;
+a 
+{ -o-transition:.3s;
   -ms-transition:.3s;
   -moz-transition:.3s;
   -webkit-transition:.3s;
@@ -270,6 +271,11 @@ a { -o-transition:.3s;
     background-color: $active-background;
 }
 
+//change navbar text color
+.navbar-custom .navbar-nav li a {
+  color: black;
+}
+
 #header {
   -o-transition:.3s;
   -ms-transition:.3s;
@@ -279,10 +285,14 @@ a { -o-transition:.3s;
 }
 
 .black {
-  background-color: rgba(224, 224, 224, 0.9);
+  background-color: rgba(0,0,0, .8);
   color: white;
   height: 50px;
   padding: 0px 5px;
+}
+
+.white {
+  color: white;
 }
 
 
@@ -325,6 +335,7 @@ ul {
   //border: 1px solid black;
   background-color: $active-background;
   color: black;
+  border-radius: 0;
 
 }
 
